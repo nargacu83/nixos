@@ -16,7 +16,7 @@
   console = {
     font = "Lat2-Terminus16";
     keyMap = "fr";
-    useXkbConfig = true;
+    # useXkbConfig = true;
   };
 
   environment.systemPackages = with pkgs; [
