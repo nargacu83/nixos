@@ -23,14 +23,14 @@
     isNormalUser = true;
     extraGroups = [ "wheels" ];
     packages = with pkgs; [
-      firefox,
-      alacritty,
+      firefox
+      alacritty
       emacs
     ];
   }
 
   environment.systemPackages = with pkgs; [
-    vim,
+    vim
     wget
   ];
 
