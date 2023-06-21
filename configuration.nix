@@ -1,17 +1,54 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
-  boot.loader.grub.device = "/dev/sda";   # (for BIOS systems only)
-  boot.loader.systemd-boot.enable = true; # (for UEFI systems only)
+  # Use the systemd-boot EFI boot loader
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  # Note: setting fileSystems is generally not
-  # necessary, since nixos-generate-config figures them out
-  # automatically in hardware-configuration.nix.
-  #fileSystems."/".device = "/dev/disk/by-label/nixos";
+  time.timeZone = "Europe/Paris";
 
-  # Enable the OpenSSH server.
-  services.sshd.enable = true;
+  i18n.defaultLocale = "fr_FR.UTF-8";
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "fr";
+    useXkbConfig = true;
+  };
+
+  users.users.quentin = {
+    isNormalUser = true;
+    extraGroups = [ "wheels" ];
+    packages = with pkgs; [
+      firefox,
+      alacritty,
+      emacs
+    ];
+  }
+
+  environment.systemPackages = with pkgs; [
+    vim,
+    wget
+  ];
+
+  services.printing.enable = true;
+
+  sound.enable = true;
+  services.pipewire.enable = true;
+
+  programs.mtr.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  system.stateVersion = "23.05";
 }
