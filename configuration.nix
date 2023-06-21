@@ -27,12 +27,15 @@
       alacritty
       emacs
     ];
-  }
+  };
 
   environment.systemPackages = with pkgs; [
     vim
     wget
   ];
+
+  # X11
+  services.xserver.libinput.enable = true;
 
   services.printing.enable = true;
 
