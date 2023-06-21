@@ -19,6 +19,36 @@
     useXkbConfig = true;
   };
 
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    awesome
+    hyprland
+  ];
+
+  # X11
+  services.xserver.enable = true;
+  services.xserver.libinput.enable = true;
+
+  services.printing.enable = true;
+
+  sound.enable = true;
+  services.pipewire.enable = true;
+  networking.networkmanager.enable = true;
+
+  programs.mtr.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
+  # programs.hyprland = {
+  #   enable = true;
+  #   xwayland = {
+  #     enable = true;
+  #   };
+  # };
+
   users.users.quentin = {
     isNormalUser = true;
     extraGroups = [ "wheels" ];
@@ -29,31 +59,5 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-  ];
-
-  # X11
-  services.xserver.libinput.enable = true;
-
-  services.printing.enable = true;
-
-  sound.enable = true;
-  services.pipewire.enable = true;
-
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  programs.hyprland = {
-    enable = true;
-    xwayland = {
-      enable = true;
-    };
-  };
-
-  system.stateVersion = "23.05";
+  system.stateVersion = "unstable";
 }
