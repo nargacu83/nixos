@@ -48,10 +48,8 @@
     enableSSHSupport = true;
   };
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  programs.hyprland.enable = true;
+  programs.hyprland.xwayland.enable = true;
 
   system.stateVersion = "23.05";
 }
