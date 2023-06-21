@@ -57,3 +57,6 @@ mount_file_system
 
 echo " >> Installing NixOS configuration"
 sleep 1
+nixos-generate-config --root /mnt
+cp configuration.nix /mnt/etc/nixos/configuration.nix
+nixos-install

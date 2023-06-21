@@ -30,7 +30,7 @@
   services.xserver.enable = true;
   services.xserver.libinput.enable = true;
 
-  services.printing.enable = true;
+  # services.printing.enable = true;
 
   sound.enable = true;
   services.pipewire.enable = true;
