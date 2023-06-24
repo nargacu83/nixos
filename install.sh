@@ -17,7 +17,7 @@ function set_disk_partition () {
     fi
 
     read -p "Enter your swap size (eg. 8): " swap_size
-    if [ "${swap_size}" == "" ] || [ ${swap_size} =~ '^[0-9]+$' ] || [ ${swap_size} -eq 0 ]; then
+    if [ "${swap_size}" == "" ] || [[ ${swap_size} =~ '^[0-9]+$' ]] || [ ${swap_size} -eq 0 ]; then
         echo "No swap"
     fi
     exit
