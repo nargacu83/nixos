@@ -72,7 +72,7 @@
   users.users.quentin = {
     isNormalUser = true;
     extraGroups = [ "wheels" ];
-    initialPassword = "password"
+    initialPassword = "password";
     packages = with pkgs; [
       firefox
       alacritty
@@ -80,5 +80,5 @@
     ];
   };
 
-  system.stateVersion = "unstable";
+  system.stateVersion = "23.05";
 }
