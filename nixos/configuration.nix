@@ -59,6 +59,39 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  sound.enable = true;
+  services.pipewire.enable = true;
+  networking.networkmanager.enable = true;
+
+  # Display Manager / Login Manager
+  services.greetd = {
+    enable = true;
+  };
+
+  # X11
+  services.xserver = {
+    enable = true;
+    layout = "fr";
+
+    # Touchpad
+    libinput.enable = true;
+
+    displayManager.lightdm.enable = false;
+    windowManager.awesome = {
+      enable = true;
+      luaModules = with pkgs.luaPackages; [
+        luarocks # is the package manager for Lua modules
+        luadbi-mysql # Database abstraction layer
+      ];
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    git
+  ];
+
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     quentin = {
