@@ -63,11 +63,6 @@
   services.pipewire.enable = true;
   networking.networkmanager.enable = true;
 
-  # Display Manager / Login Manager
-  services.greetd = {
-    enable = true;
-  };
-
   # X11
   services.xserver = {
     enable = true;
@@ -76,7 +71,6 @@
     # Touchpad
     libinput.enable = true;
 
-    displayManager.lightdm.enable = false;
     windowManager.awesome = {
       enable = true;
       luaModules = with pkgs.luaPackages; [
@@ -90,6 +84,8 @@
     vim
     wget
     git
+    # Running in VM
+    spice-vdagent
   ];
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
@@ -103,7 +99,6 @@
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB0ITcd27IuHnhAEfjrr+NsHgCZWu4lp5QDeLDHs1+Yl"
       ];
-      # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
       extraGroups = [ "wheel" "kvm" "input" "disk" "libvirtd" ];
     };
   };
