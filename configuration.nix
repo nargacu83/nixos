@@ -6,7 +6,7 @@
     ./hardware-configuration.nix
   ];
 
-  config = {
+  nixpkgs.config = {
     allowUnfree = true;
   };
 
