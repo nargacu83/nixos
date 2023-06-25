@@ -1,7 +1,7 @@
 # This is just an example, you should generate yours with nixos-generate-config and put it in here.
 {
   fileSystems."/" = {
-    device = "/dev/vda1";
+    device = "/dev/disk/by-label/nixos";
     fsType = "ext4";
   };
 
