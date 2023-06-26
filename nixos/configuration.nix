@@ -49,6 +49,9 @@
       experimental-features = "nix-command flakes";
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
+
+      substituters = ["https://hyprland.cachix.org"];
+      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
   };
 
@@ -61,7 +64,26 @@
 
   sound.enable = true;
   services.pipewire.enable = true;
+  services.dbus.enable = true;
+  security.polkit.enable = true;
+  programs.mtr.enable = true;
   networking.networkmanager.enable = true;
+  networking.firewall.enable = false;
+  networking.enableIPv6 = false;
+  virtualisation.libvirtd.enable = true;
+
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "fr";
+  };
+
+  time.timeZone = "Europe/Paris";
+  i18n.defaultLocale = "fr_FR.UTF-8";
 
   # X11
   services.xserver = {
@@ -80,13 +102,114 @@
     };
   };
 
+  # Wayland
+  wayland.windowManager.hyprland = {
+    enable = true;
+    xwayland = {
+      enable = true;
+      hidpi = false;
+    };
+    nvidiaPatches = false;
+  };
+  
   environment.systemPackages = with pkgs; [
     vim
     wget
+
+    zsh
+    zsh-completions
+    spaceship-prompt
+
     git
+    git-lfs
+    gitui
+
+    # Devices
+    radeontop
+    piper
+
+    picom-jonaburg
+    btop
+    sxhkd
+    stow
+    tldr
+    dunst
+    gammastep
+    yt-dlp
+
+    # Archive
+    unzip
+    unrar
+
+    maim
+    xclip
+    nitrogen
+
+    epson-escpr
+    epson-escpr2
+
+    # Audio
+    pavucontrol
+    easyeffects
+
+    # VM
+    qemu
+    virt-manager
     # Running in VM
     spice-vdagent
+
+    # IO
+    cinnamon.nemo
+    gvfs
+    gnome.file-roller
+
+    # Programs
+    rofi
+    alacritty
+    firefox
+    emacs
+    libqalculate
+    libreoffice-fresh
+
+    # Media
+    imv
+    mpv
+    freetube
+    gimp
+    krita
+    inkscape
+
+    # Development
+    blender
+    godot
+    godot_4
+    scons
+    docker
+    jdk
+    hugo
+    cargo
+
+    # Gaming
+    gamemode
+    mangohud
+    lutris
+    steam
+
+    # Themes
+    dracula-theme
+    dracula-icon-theme
   ];
+
+  xdg.portal = {
+    enable = true;
+    # wlr.enable = true;
+    # gtk portal needed to make gtk apps happy
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  services.flatpak.enable = true;
+
+  # TODO: Fonts
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
@@ -100,23 +223,6 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB0ITcd27IuHnhAEfjrr+NsHgCZWu4lp5QDeLDHs1+Yl"
       ];
       extraGroups = [ "wheel" "kvm" "input" "disk" "libvirtd" ];
-    };
-  };
-
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "fr";
-  };
-
-  # This setups a SSH server. Very important if you're setting up a headless system.
-  # Feel free to remove if you don't need it.
-  services.openssh = {
-    enable = true;
-    settings = {
-      # Forbid root login through SSH.
-      PermitRootLogin = "no";
-      # Use keys only. Remove if you want to SSH using password (not recommended)
-      PasswordAuthentication = false;
     };
   };
 
