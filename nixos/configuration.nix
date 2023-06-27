@@ -128,23 +128,18 @@
     radeontop
     piper
 
+    # X11
     picom-jonaburg
-    btop
     sxhkd
-    stow
-    tldr
-    dunst
-    gammastep
-    yt-dlp
+    maim
+    xclip
+    nitrogen
 
     # Archive
     unzip
     unrar
 
-    maim
-    xclip
-    nitrogen
-
+    # Printer
     epson-escpr
     epson-escpr2
 
@@ -164,12 +159,17 @@
     gnome.file-roller
 
     # Programs
+    stow
+    dunst
+    gammastep
+    btop
     rofi
     alacritty
     firefox
     emacs
     libqalculate
     libreoffice-fresh
+    yt-dlp
 
     # Media
     imv
