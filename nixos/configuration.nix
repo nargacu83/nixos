@@ -74,9 +74,13 @@
   services.dbus.enable = true;
   security.polkit.enable = true;
   programs.mtr.enable = true;
-  networking.networkmanager.enable = true;
-  networking.firewall.enable = false;
-  networking.enableIPv6 = false;
+
+  networking = {
+    networkmanager.enable = true;
+    firewall.enable = false;
+    enableIPv6 = false;
+  };
+
   virtualisation.libvirtd.enable = true;
 
   programs.gnupg.agent = {
