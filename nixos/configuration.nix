@@ -81,6 +81,19 @@
     enableIPv6 = false;
   };
 
+  services.printing = {
+    enable = true;
+    drivers = [
+      epson-escpr
+      epson-escpr2
+    ];
+    browsing = true;
+    defaultShared = false;
+  };
+
+  services.blueman.enable = true;
+  hardware.bluetooth.enable = true;
+
   virtualisation.libvirtd.enable = true;
 
   programs.gnupg.agent = {
@@ -93,8 +106,21 @@
     keyMap = "fr";
   };
 
-  time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "fr_FR.UTF-8";
+  time.timeZone = "Europe/Paris";
+
+  environment = {
+    variables = {
+      # Use qt5ct for theming QT apps
+      QT_QPA_PLATFORMTHEME=qt5ct
+      # Java applications fix, i don't remember for what
+      _JAVA_AWT_WM_NONREPARENTING=1
+      # Multi languages keyboard
+      GTK_IM_MODULE="fcitx"
+      QT_IM_MODULE="fcitx"
+      XMODIFIERS="@im=fcitx"
+    };
+  };
 
   # X11
   services.xserver = {
@@ -146,13 +172,12 @@
     xclip
     nitrogen
 
+    # Wayland
+    waybar
+
     # Archive
     unzip
     unrar
-
-    # Printer
-    epson-escpr
-    epson-escpr2
 
     # Audio
     pavucontrol
@@ -165,7 +190,7 @@
     spice-vdagent
 
     # IO
-    cinnamon.nemo
+    cinnamon.nemo-with-extensions
     gvfs
     gnome.file-roller
 
@@ -177,7 +202,6 @@
     rofi
     alacritty
     firefox
-    emacs
     libqalculate
     libreoffice-fresh
     yt-dlp
@@ -194,6 +218,8 @@
     blender
     godot
     godot_4
+    # TODO: unstable.godot
+    # TODO: unstable.godot_4
     scons
     docker
     jdk
@@ -214,13 +240,26 @@
   xdg.portal = {
     enable = true;
     # wlr.enable = true;
-    # gtk portal needed to make gtk apps happy
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+      xdg-utils
+    ];
   };
 
   services.flatpak.enable = true;
 
-  # TODO: Fonts
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      cantarell-fonts
+      noto-fonts
+      jetbrains-mono
+      winePackages.fonts
+      nerdfonts
+      google-fonts
+    ];
+  };
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
