@@ -83,7 +83,7 @@
 
   services.printing = {
     enable = true;
-    drivers = [
+    drivers = with pkgs; [
       epson-escpr
       epson-escpr2
     ];
