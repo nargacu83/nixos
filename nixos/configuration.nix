@@ -63,7 +63,14 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   sound.enable = true;
-  services.pipewire.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
   services.dbus.enable = true;
   security.polkit.enable = true;
   programs.mtr.enable = true;
