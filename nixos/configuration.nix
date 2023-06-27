@@ -112,9 +112,9 @@
   environment = {
     variables = {
       # Use qt5ct for theming QT apps
-      QT_QPA_PLATFORMTHEME=qt5ct
+      QT_QPA_PLATFORMTHEME="qt5ct"
       # Java applications fix, i don't remember for what
-      _JAVA_AWT_WM_NONREPARENTING=1
+      _JAVA_AWT_WM_NONREPARENTING="1"
       # Multi languages keyboard
       GTK_IM_MODULE="fcitx"
       QT_IM_MODULE="fcitx"
@@ -236,6 +236,8 @@
     dracula-theme
     dracula-icon-theme
   ];
+
+  programs.java.enable = true;
 
   xdg.portal = {
     enable = true;
