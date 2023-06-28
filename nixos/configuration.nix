@@ -274,7 +274,7 @@
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB0ITcd27IuHnhAEfjrr+NsHgCZWu4lp5QDeLDHs1+Yl"
       ];
-      extraGroups = [ "wheel" "kvm" "input" "disk" "libvirtd" ];
+      extraGroups = [ "wheel" "kvm" "input" "disk" "libvirtd" "networkmanager" ];
     };
   };
 
