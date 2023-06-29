@@ -93,6 +93,11 @@
 
   services.blueman.enable = true;
   hardware.bluetooth.enable = true;
+  hardware = {
+    opengl.extraPackages = with pkgs; [
+      rocm-opencl-icd
+    ];
+  };
 
   virtualisation.libvirtd.enable = true;
 
