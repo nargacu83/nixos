@@ -41,10 +41,80 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
-    firefox
+    # Devices
+    radeontop
+    piper
+
+    # X11
+    picom-jonaburg
+    sxhkd
+    maim
+    xclip
+    nitrogen
+
+    # Wayland
+    hyprland
+    waybar
+
+    # Archive
+    unzip
+    unrar
+
+    # Audio
+    pavucontrol
+    easyeffects
+
+    # VM
+    qemu
+    virt-manager
+    # Running in VM
+    spice-vdagent
+
+    # IO
+    cinnamon.nemo-with-extensions
+    gvfs
+    gnome.file-roller
+
+    # Programs
+    dunst
+    gammastep
+    btop
+    rofi
     alacritty
-    emacs
+    firefox
+    libqalculate
+    # libreoffice-fresh
+    yt-dlp
+
+    # Media
+    imv
+    mpv
     freetube
+    gimp
+    krita
+    inkscape
+
+    # Development
+    blender
+    godot
+    godot_4
+    # TODO: unstable.godot
+    # TODO: unstable.godot_4
+    scons
+    docker
+    jdk
+    hugo
+    cargo
+
+    # Gaming
+    gamemode
+    mangohud
+    lutris
+    steam
+
+    # Themes
+    dracula-theme
+    dracula-icon-theme
   ];
 
   time.timeZone = "Europe/Paris";

@@ -8,6 +8,9 @@
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
 
+    # Import home-manager's NixOS module
+    inputs.home-manager.nixosModules.home-manager
+
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
 
@@ -52,6 +55,14 @@
 
       substituters = ["https://hyprland.cachix.org"];
       trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    };
+  };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      # Import your home-manager configuration
+      quentin = import ../home-manager;
     };
   };
 
@@ -165,82 +176,6 @@
     git
     git-lfs
     gitui
-
-    # Devices
-    radeontop
-    piper
-
-    # X11
-    picom-jonaburg
-    sxhkd
-    maim
-    xclip
-    nitrogen
-
-    # Wayland
-    hyprland
-    waybar
-
-    # Archive
-    unzip
-    unrar
-
-    # Audio
-    pavucontrol
-    easyeffects
-
-    # VM
-    qemu
-    virt-manager
-    # Running in VM
-    spice-vdagent
-
-    # IO
-    cinnamon.nemo-with-extensions
-    gvfs
-    gnome.file-roller
-
-    # Programs
-    stow
-    dunst
-    gammastep
-    btop
-    rofi
-    alacritty
-    firefox
-    libqalculate
-    # libreoffice-fresh
-    yt-dlp
-
-    # Media
-    imv
-    mpv
-    freetube
-    gimp
-    krita
-    inkscape
-
-    # Development
-    blender
-    godot
-    godot_4
-    # TODO: unstable.godot
-    # TODO: unstable.godot_4
-    scons
-    docker
-    jdk
-    hugo
-    cargo
-
-    # Gaming
-    gamemode
-    mangohud
-    lutris
-    steam
-
-    # Themes
-    dracula-theme
-    dracula-icon-theme
   ];
 
   programs.java.enable = true;
