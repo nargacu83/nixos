@@ -178,7 +178,7 @@
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestions.enable = true;
     enableCompletion = true;
     histFile = "$XDG_CACHE_HOME/zsh.history";
   };
