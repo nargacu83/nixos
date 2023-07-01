@@ -208,7 +208,7 @@
     alacritty
     firefox
     libqalculate
-    libreoffice-fresh
+    # libreoffice-fresh
     yt-dlp
 
     # Media
