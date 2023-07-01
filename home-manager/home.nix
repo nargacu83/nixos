@@ -130,8 +130,13 @@
 
   programs.zsh = {
     enable = true;
-    autosuggestions.enable = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
     histFile = "$XDG_CACHE_HOME/zsh.history";
+  };
+
+  programs.starship = {
+    enable = true;
   };
 
   # Nicely reload system units when changing configs

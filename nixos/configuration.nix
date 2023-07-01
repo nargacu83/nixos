@@ -171,7 +171,6 @@
 
     zsh
     zsh-completions
-    spaceship-prompt
 
     git
     git-lfs
