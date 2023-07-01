@@ -130,6 +130,8 @@
 
   programs.starship = {
     enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
   };
 
   # Nicely reload system units when changing configs
