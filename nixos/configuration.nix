@@ -212,9 +212,6 @@
       # Be sure to change it (using passwd) after rebooting!
       initialPassword = "password";
       isNormalUser = true;
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB0ITcd27IuHnhAEfjrr+NsHgCZWu4lp5QDeLDHs1+Yl dev.quentinfranchi@protonmail.com"
-      ];
       extraGroups = [ "wheel" "kvm" "input" "disk" "libvirtd" "networkmanager" ];
     };
   };
