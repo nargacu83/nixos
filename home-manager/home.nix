@@ -41,6 +41,8 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
+    gitui
+
     # Devices
     radeontop
     piper
@@ -119,10 +121,17 @@
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
+
   programs.git = {
     enable = true;
     userName  = "Quentin Franchi";
     userEmail = "dev.quentinfranchi@protonmail.com";
+  };
+
+  programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
+    histFile = "$XDG_CACHE_HOME/zsh.history";
   };
 
   # Nicely reload system units when changing configs

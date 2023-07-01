@@ -175,7 +175,6 @@
 
     git
     git-lfs
-    gitui
   ];
 
   programs.java.enable = true;
