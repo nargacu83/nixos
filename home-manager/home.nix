@@ -132,7 +132,7 @@
     enable = true;
     enableAutosuggestions = true;
     enableCompletion = true;
-    histFile = "$XDG_CACHE_HOME/zsh.history";
+    history.path = "$XDG_CACHE_HOME/zsh.history";
   };
 
   programs.starship = {
