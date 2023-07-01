@@ -210,6 +210,7 @@
       # Be sure to change it (using passwd) after rebooting!
       initialPassword = "password";
       isNormalUser = true;
+      shell = pkgs.zsh;
       extraGroups = [ "wheel" "kvm" "input" "disk" "libvirtd" "networkmanager" ];
     };
   };
