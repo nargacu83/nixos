@@ -178,6 +178,7 @@
     nitrogen
 
     # Wayland
+    hyprland
     waybar
 
     # Archive
