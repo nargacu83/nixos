@@ -96,7 +96,7 @@
 
     # Development
     blender
-    godot
+    # godot
     godot_4
     # TODO: unstable.godot
     # TODO: unstable.godot_4
