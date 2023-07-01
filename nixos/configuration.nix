@@ -62,7 +62,7 @@
     extraSpecialArgs = { inherit inputs; };
     users = {
       # Import your home-manager configuration
-      quentin = import ../home-manager;
+      quentin = import ../home-manager/home.nix;
     };
   };
 
