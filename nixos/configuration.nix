@@ -81,25 +81,25 @@
     enableIPv6 = false;
   };
 
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [
-      epson-escpr
-      epson-escpr2
-    ];
-    browsing = true;
-    defaultShared = false;
-  };
+  # services.printing = {
+  #   enable = true;
+  #   drivers = with pkgs; [
+  #     epson-escpr
+  #     epson-escpr2
+  #   ];
+  #   browsing = true;
+  #   defaultShared = false;
+  # };
 
-  services.blueman.enable = true;
-  hardware.bluetooth.enable = true;
-  hardware = {
-    opengl.extraPackages = with pkgs; [
-      rocm-opencl-icd
-    ];
-  };
+  # services.blueman.enable = true;
+  # hardware = {
+  #   bluetooth.enable = true;
+  #   opengl.extraPackages = with pkgs; [
+  #     rocm-opencl-icd
+  #   ];
+  # };
 
-  virtualisation.libvirtd.enable = true;
+  # virtualisation.libvirtd.enable = true;
 
   programs.gnupg.agent = {
     enable = true;
@@ -145,15 +145,15 @@
   };
 
   # Wayland
-  programs.hyprland = {
-    enable = true;
-    xwayland = {
-      enable = true;
-      hidpi = false;
-    };
-    nvidiaPatches = false;
-  };
-  
+  # programs.hyprland = {
+  #   enable = true;
+  #   xwayland = {
+  #     enable = true;
+  #     hidpi = false;
+  #   };
+  #   nvidiaPatches = false;
+  # };
+
   environment.systemPackages = with pkgs; [
     vim
     wget
