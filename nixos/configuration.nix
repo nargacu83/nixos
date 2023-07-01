@@ -145,14 +145,14 @@
   };
 
   # Wayland
-  # programs.hyprland = {
-  #   enable = true;
-  #   xwayland = {
-  #     enable = true;
-  #     hidpi = false;
-  #   };
-  #   nvidiaPatches = false;
-  # };
+  programs.hyprland = {
+    enable = true;
+    xwayland = {
+      enable = true;
+      hidpi = false;
+    };
+    nvidiaPatches = false;
+  };
 
   environment.systemPackages = with pkgs; [
     vim
