@@ -128,13 +128,6 @@
     userEmail = "dev.quentinfranchi@protonmail.com";
   };
 
-  programs.zsh = {
-    enable = true;
-    enableAutosuggestions = true;
-    enableCompletion = true;
-    history.path = "$XDG_CACHE_HOME/zsh.history";
-  };
-
   programs.starship = {
     enable = true;
   };

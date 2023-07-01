@@ -176,6 +176,13 @@
     git-lfs
   ];
 
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    history.path = "$XDG_CACHE_HOME/zsh.history";
+  };
+
   programs.java.enable = true;
 
   xdg.portal = {
