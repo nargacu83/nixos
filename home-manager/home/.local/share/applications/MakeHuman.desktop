@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=MakeHuman
+Exec=/usr/bin/makehuman %U
+Terminal=false
+Type=Application
+Icon=makehuman
+Comment=Parametrical modeling program for creating human bodies

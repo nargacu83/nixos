@@ -1,0 +1,49 @@
+#!/bin/env bash
+
+# This script will randomly go through the files of a directory, setting it
+# up as the wallpaper at regular intervals
+#
+# NOTE: this script is in bash (not posix shell), because the shuf command
+
+if [[ $# -lt 1 ]] || [[ ! -d $1 ]]; then
+	echo "Usage:
+	$0 <dir containg images>"
+	exit 1
+fi
+
+# Edit bellow to control the images transition
+export SWWW_TRANSITION_FPS=100
+export SWWW_TRANSITION_STEP=3
+export SWWW_TRANSITION=center
+
+# This controls (in seconds) when to switch to the next image
+INTERVAL=3600
+
+images=()
+
+# Get images in the given directory
+function get_images() {
+	images=()
+
+	for file in $(find "$1" -type f); do
+		images+=("${file}")
+	done
+}
+
+# Shuffle images
+images=( $(shuf -e "${images[@]}") )
+
+while true; do
+	get_images $1
+
+	# Makes sure they are images
+	[ ${#images[@]} -eq 0 ] && echo "The given directory doesn't have images." && break
+
+	for img in "${images[@]}"; do
+		# Makes sure image exists
+		[[ ! -f $img ]] && continue
+
+		swww img "$img"
+		sleep $INTERVAL
+	done
+done

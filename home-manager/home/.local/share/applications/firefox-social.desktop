@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Firefox Social
+Comment=All-in-one social profile for element and discord.
+Icon=firefox
+Type=Application
+Categories=Network;InstantMessaging;
+StartupWMClass=discord
+Exec=/usr/lib/firefox/firefox -P social --class=discord

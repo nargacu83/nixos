@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=UnityHub Handler
+Exec=/opt/unityhub/unityhub-bin %u
+StartupNotify=false
+MimeType=x-scheme-handler/unityhub;
