@@ -137,7 +137,10 @@
     windowManager.awesome.enable = true;
   };
 
-  home.file.".config/awesome".source = ./dotfiles/stow_home/awesome/.config/awesome;
+  home.file.".config/awesome" = {
+    source = ./dotfiles/stow_home/awesome/.config/awesome;
+    recursive = true;
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
