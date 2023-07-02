@@ -138,7 +138,7 @@
   };
 
   home.file.".config/awesome" = {
-    source = ./dotfiles/stow_home/awesome/.config/awesome;
+    source = ./awesome;
     recursive = true;
   };
 
