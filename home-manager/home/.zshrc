@@ -8,9 +8,6 @@ HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE=~/.cache/zsh.history
 
-# Enable colors and change prompt:
-# autoload -U colors && colors
-
 # Bind keys
 bindkey -e
 bindkey '^[[7~' beginning-of-line                               # Home key
@@ -37,24 +34,6 @@ bindkey '^[[1;5D' backward-word                                 #
 bindkey '^[[1;5C' forward-word                                  #
 bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
 bindkey '^[[Z' undo                                             # Shift+tab undo last action
-
-
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-# zstyle :compinstall filename '$HOME/.zshrc'
-
-# # Autocomplete
-# autoload -Uz compinit
-# compinit
-
-# # Plugins
-# source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-# source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
-
-# ❯
-
-# autoload -U promptinit; promptinit
-# prompt spaceship
 
 ### ARCHIVE EXTRACTION
 # usage: ex <file>
@@ -98,19 +77,6 @@ alias ...='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
-
-# pacman and paru
-alias pacsyu='sudo pacman -Syyu'                 # update only standard pkgs
-alias parusua="paru -Sua --noconfirm"              # update only AUR pkgs
-alias parusyu="paru -Syu --noconfirm"              # update standard pkgs and AUR pkgs
-alias unlock="sudo rm /var/lib/pacman/db.lck"    # remove pacman lock
-alias cleanup='sudo pacman -Rns $(pacman -Qtdq)' # remove orphaned packages
-
-# get fastest mirrors
-alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
