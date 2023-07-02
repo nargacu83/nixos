@@ -137,6 +137,13 @@
     windowManager.awesome.enable = true;
   };
 
+  home.file.".zshrc".source = ./home/.zshrc;
+
+  home.file.".gnupg" = {
+    source = ./home/.gnupg;
+    recursive = true;
+  };
+
   home.file.".config" = {
     source = ./home/.config;
     recursive = true;
@@ -146,8 +153,6 @@
     source = ./home/.local;
     recursive = true;
   };
-
-  home.file.".zshrc".source = ./home/.zshrc;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
