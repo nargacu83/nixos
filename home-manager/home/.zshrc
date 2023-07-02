@@ -9,9 +9,7 @@ SAVEHIST=10000000
 HISTFILE=~/.cache/zsh.history
 
 # Enable colors and change prompt:
-autoload -U colors && colors
-# # Prompt without SPACESHIP
-# PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+# autoload -U colors && colors
 
 # Bind keys
 bindkey -e
@@ -43,11 +41,11 @@ bindkey '^[[Z' undo                                             # Shift+tab undo
 
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '$HOME/.zshrc'
+# zstyle :compinstall filename '$HOME/.zshrc'
 
-# Autocomplete
-autoload -Uz compinit
-compinit
+# # Autocomplete
+# autoload -Uz compinit
+# compinit
 
 # # Plugins
 # source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
@@ -55,8 +53,8 @@ compinit
 
 # ❯
 
-autoload -U promptinit; promptinit
-prompt spaceship
+# autoload -U promptinit; promptinit
+# prompt spaceship
 
 ### ARCHIVE EXTRACTION
 # usage: ex <file>
@@ -130,7 +128,7 @@ alias rm='rm -i'
 ### RANDOM COLOR SCRIPT ###
 # Get this script from dt's GitLab: gitlab.com/dwt1/shell-color-scripts
 # Or install it from the Arch User Repository: shell-color-scripts
-sh-colorscript random
+# sh-colorscript random
 
 PATH="/home/quentin/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/quentin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
