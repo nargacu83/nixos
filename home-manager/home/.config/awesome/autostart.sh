@@ -66,9 +66,6 @@ if [ -x "$(command -v fcitx5)" ]; then
   fcitx5 -d &
 fi
 
-dunstify "Test"
-alacritty &
-
 sleep 1
 killall xdg-desktop-portal-hyprland
 killall xdg-desktop-portal-wlr
