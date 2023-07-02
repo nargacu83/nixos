@@ -81,7 +81,7 @@
     dunst
     gammastep
     btop
-    rofi
+    rofi-wayland
     alacritty
     firefox
     libqalculate
@@ -137,10 +137,27 @@
     windowManager.awesome.enable = true;
   };
 
-  home.file.".config/awesome" = {
-    source = ./awesome;
+  # home.file.".config/mimeapps.list".source = ./mimeapps/mimeapps.list;
+  # home.file.".config/alacritty/alacritty.yml".source = ./alacritty/alacritty.yml;
+  # home.file.".config/dunst/dunstrc".source = ./dunst/dunstrc;
+  # home.file.".config/picom/picom.conf".source = ./picom/picom.conf;
+
+  # home.file.".config/awesome" = {
+  #   source = ./awesome;
+  #   recursive = true;
+  # };
+
+  home.file.".config" = {
+    source = ./home/.config;
     recursive = true;
   };
+
+  home.file.".local" = {
+    source = ./home/.local;
+    recursive = true;
+  };
+
+  home.file.".zshrc".source = ./home/.zshrc;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

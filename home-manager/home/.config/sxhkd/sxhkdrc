@@ -1,0 +1,45 @@
+## Common hotkeys
+
+# # terminal emulator
+super + Return
+	alacritty
+
+# # launch file manager
+super + e
+	nemo
+
+# # kill session
+super + control + q
+	loginctl kill-session $XDG_SESSION_ID
+
+# screenshots with rofi
+super + Print
+	~/.config/rofi/screenshot screen
+
+super + shift + Print
+	~/.config/rofi/screenshot selection
+
+# # launch music radio
+# super + r
+# 	~/.config/rofi/scripts/radio
+
+# change keyboard layout
+super + shift + l
+	~/.config/sxhkd/scripts/changekblayout
+
+## Rofi
+
+# program launcher
+super + p
+	~/.config/rofi/launcher
+
+# powermenu
+super + ctrl + Escape
+	~/.config/rofi/powermenu
+
+# screenshots with rofi
+super + Print
+	~/.config/rofi/scripts/screenshot screen
+
+super + shift + Print
+	~/.config/rofi/scripts/screenshot selection

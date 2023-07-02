@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+default_layout="fr"
+second_layout="us"
+prefix="Clavier"
+
+current_layout="$(setxkbmap -query | grep layout | awk '{print $2}')"
+
+if [ "${current_layout}" == "${default_layout}" ]; then
+    setxkbmap ${second_layout}
+    notify-send "${prefix} ${second_layout}"
+else
+    setxkbmap ${default_layout}
+    notify-send "${prefix} ${default_layout}"
+fi
