@@ -138,7 +138,7 @@
   };
 
   home.file.".config/awesome" = {
-    source = ./awesome;
+    source = awesome;
     recursive = true;
   };
 
