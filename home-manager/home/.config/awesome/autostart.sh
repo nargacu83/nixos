@@ -66,6 +66,7 @@ if [ -x "$(command -v fcitx5)" ]; then
   fcitx5 -d &
 fi
 
+dunstify "Test"
 alacritty &
 
 sleep 1
