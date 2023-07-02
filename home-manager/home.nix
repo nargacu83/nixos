@@ -139,7 +139,7 @@
 
   home.file = {
     "awesome" = {
-      source = ./dotfiles/stow_home/awesome/.config/awesome;
+      source = ../home_manager/dotfiles/stow_home/awesome/.config/awesome;
       target = "./.config/awesome";
     };
   };
