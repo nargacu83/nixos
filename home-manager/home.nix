@@ -138,7 +138,7 @@
   };
 
   home.file = {
-    ".config/awesome/rc.lua".source = ./rc.lua;
+    ".config/awesome".source = ./dotfiles/stow_home/awesome/.config/awesome;
   };
 
   # Nicely reload system units when changing configs
