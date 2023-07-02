@@ -138,8 +138,7 @@
   };
 
   home.file.".config/awesome" = {
-    source = awesome;
-    recursive = true;
+    source = ./awesome;
   };
 
   # Nicely reload system units when changing configs
