@@ -70,8 +70,8 @@ symbol = "fossil "
 [gcloud]
 symbol = "gcp "
 
-# [git_branch]
-# symbol = "git "
+[git_branch]
+symbol = ""
 
 [golang]
 symbol = "go "
