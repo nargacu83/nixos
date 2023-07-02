@@ -137,8 +137,8 @@
     windowManager.awesome.enable = true;
   };
 
-  home.configFile = {
-    "awesome/rc.lua".source = ./rc.lua;
+  home.file = {
+    ".config/awesome/rc.lua".source = ./rc.lua;
   };
 
   # Nicely reload system units when changing configs
