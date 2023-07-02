@@ -1,4 +1,4 @@
-#!/bin/env sh
+#!/usr/bin/env sh
 
 # export QT_QPA_PLATFORMTHEME=qt5ct
 # export _JAVA_AWT_WM_NONREPARENTING=1
@@ -66,7 +66,7 @@ if [ -x "$(command -v fcitx5)" ]; then
   fcitx5 -d &
 fi
 
-dunstify "Test"
+alacritty &
 
 sleep 1
 killall xdg-desktop-portal-hyprland
