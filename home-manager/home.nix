@@ -119,7 +119,6 @@
     dracula-icon-theme
   ];
 
-  # Enable home-manager and git
   programs.home-manager.enable = true;
 
   programs.git = {
@@ -132,6 +131,17 @@
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
+  };
+
+  xsession = {
+    windowManager.awesome.enable = true;
+  };
+
+  home.file = {
+    "awesome" = {
+      source = "../dotfiles/stow_home/awesome/.config/awesome";
+      target = "./.config/awesome";
+    };
   };
 
   # Nicely reload system units when changing configs
