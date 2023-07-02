@@ -1,10 +1,10 @@
 #!/bin/env sh
 
-export QT_QPA_PLATFORMTHEME=qt5ct
-export _JAVA_AWT_WM_NONREPARENTING=1
-export GTK_IM_MODULE='fcitx'
-export QT_IM_MODULE='fcitx'
-export XMODIFIERS='@im=fcitx'
+# export QT_QPA_PLATFORMTHEME=qt5ct
+# export _JAVA_AWT_WM_NONREPARENTING=1
+# export GTK_IM_MODULE='fcitx'
+# export QT_IM_MODULE='fcitx'
+# export XMODIFIERS='@im=fcitx'
 
 #set resolution and refresh rate
 if [ -x "$(command -v xrandr)" ]; then
@@ -51,7 +51,6 @@ fi
 
 #start polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-# /usr/lib/polkit-kde-authentication-agent-1 &
 
 if [ -x "$(command -v nm-applet)" ]; then
   nm-applet &
@@ -66,6 +65,8 @@ fi
 if [ -x "$(command -v fcitx5)" ]; then
   fcitx5 -d &
 fi
+
+notify-send "Test"
 
 sleep 1
 killall xdg-desktop-portal-hyprland
