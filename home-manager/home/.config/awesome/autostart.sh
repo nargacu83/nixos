@@ -66,7 +66,7 @@ if [ -x "$(command -v fcitx5)" ]; then
   fcitx5 -d &
 fi
 
-notify-send "Test"
+dunstify "Test"
 
 sleep 1
 killall xdg-desktop-portal-hyprland
