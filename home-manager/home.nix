@@ -142,7 +142,7 @@
   #     source = dotfiles/awesome/.config/awesome;
   #   };
   # };
-  home.file.".config/awesome".source = ./dotfiles/stow_home/awesome/.config/awesome;
+  home.file.".config/awesome".source = ./home_manager/dotfiles/stow_home/awesome/.config/awesome;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
