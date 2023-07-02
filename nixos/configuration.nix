@@ -197,17 +197,17 @@
 
   services.flatpak.enable = true;
 
-  # fonts = {
-  #   fontDir.enable = true;
-  #   fonts = with pkgs; [
-  #     cantarell-fonts
-  #     noto-fonts
-  #     jetbrains-mono
-  #     winePackages.fonts
-  #     nerdfonts
-  #     google-fonts
-  #   ];
-  # };
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      cantarell-fonts
+      noto-fonts
+      jetbrains-mono
+      # winePackages.fonts
+      # nerdfonts
+      # google-fonts
+    ];
+  };
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users = {
