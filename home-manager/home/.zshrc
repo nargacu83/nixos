@@ -6,7 +6,7 @@ export PATH="$PATH:/home/quentin/.local/bin"
 # History in cache directory:
 HISTSIZE=10000000
 SAVEHIST=10000000
-# HISTFILE=~/.cache/zsh.history
+HISTFILE=~/.cache/zsh.history
 
 # Enable colors and change prompt:
 autoload -U colors && colors
