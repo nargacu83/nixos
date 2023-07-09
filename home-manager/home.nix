@@ -23,6 +23,7 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
+      outputs.overlays.unstable-packages
     ];
     # Configure your nixpkgs instance
     config = {
