@@ -52,6 +52,10 @@ fi
 #start polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
+if [ -x "$(command -v nautilus)" ]; then
+  nautilus --gapplication-service &
+fi
+
 if [ -x "$(command -v nm-applet)" ]; then
   nm-applet &
 fi

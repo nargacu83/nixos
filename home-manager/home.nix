@@ -73,7 +73,7 @@
     spice-vdagent
 
     # IO
-    cinnamon.nemo-with-extensions
+    gnome.nautilus
     gvfs
     gnome.file-roller
 

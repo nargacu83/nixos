@@ -6,7 +6,7 @@ super + Return
 
 # # launch file manager
 super + e
-	nemo
+	nautilus
 
 # # kill session
 super + control + q

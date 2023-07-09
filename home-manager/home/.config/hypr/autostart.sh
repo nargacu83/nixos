@@ -14,7 +14,7 @@ dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 # wallpaper
 if [ -x "$(command -v swww)" ]; then
   swww init &
-  wallpapers /mnt/PERSO/Nextcloud/Wallpapers/Current/
+  wallpapers /mnt/DATA/Nextcloud/Wallpapers/Current/
 fi
 
 #start notification daemon
@@ -29,6 +29,10 @@ fi
 
 if [ -x "$(command -v gammastep-indicator)" ]; then
   gammastep-indicator -m wayland &
+fi
+
+if [ -x "$(command -v nautilus)" ]; then
+  nautilus --gapplication-service &
 fi
 
 if [ -x "$(command -v nm-applet)" ]; then
