@@ -143,8 +143,9 @@
     recursive = true;
   };
 
-  home.file.".config" = {
-    source = config.lib.file.mkOutOfStoreSymlink ./home/.config;
+  home.file.".config/mimeapps.list".source = config.lib.file.mkOutOfStoreSymlink ./home/.config;
+  home.file.".config/FreeTube" = {
+    source = config.lib.file.mkOutOfStoreSymlink ./home/.config/FreeTube;
     recursive = true;
   };
 
