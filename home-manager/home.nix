@@ -98,10 +98,7 @@
 
     # Development
     blender
-    # godot
-    godot_4
-    # TODO: unstable.godot
-    # TODO: unstable.godot_4
+    unstable.godot_4
     scons
     docker
     jdk
