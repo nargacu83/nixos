@@ -19,15 +19,19 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#nixos'
-    overlays = import ./overlays { inherit inputs; };
-    nixosConfigurations = {
-      # FIXME replace with your hostname
-      nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs; }; # Pass flake inputs to our config
-        # > Our main nixos configuration file <
-        modules = [ ./nixos/configuration.nix ];
+    let
+      inherit (self) outputs;
+    in {
+      # NixOS configuration entrypoint
+      # Available through 'nixos-rebuild --flake .#nixos'
+      overlays = import ./overlays { inherit inputs; };
+      nixosConfigurations = {
+        # FIXME replace with your hostname
+        nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; }; # Pass flake inputs to our config
+          # > Our main nixos configuration file <
+          modules = [ ./nixos/configuration.nix ];
+        };
       };
     };
   };
