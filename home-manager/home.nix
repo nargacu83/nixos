@@ -137,20 +137,36 @@
     windowManager.awesome.enable = true;
   };
 
-  home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink ./home/.zshrc;
+  # home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink ./home/.zshrc;
+  # home.file.".gnupg" = {
+  #   source = config.lib.file.mkOutOfStoreSymlink ./home/.gnupg;
+  #   recursive = true;
+  # };
+
+  # home.file.".config/mimeapps.list".source = config.lib.file.mkOutOfStoreSymlink ./home/.config;
+  # home.file.".config" = {
+  #   source = config.lib.file.mkOutOfStoreSymlink ./home/.config/FreeTube;
+  #   recursive = true;
+  # };
+
+  # home.file.".local" = {
+  #   source = ./home/.local;
+  #   recursive = true;
+  # };
+
+  home.file.".zshrc".source = ./home/.zshrc;
   home.file.".gnupg" = {
-    source = config.lib.file.mkOutOfStoreSymlink ./home/.gnupg;
+    source = ./home/.gnupg;
     recursive = true;
   };
 
-  home.file.".config/mimeapps.list".source = config.lib.file.mkOutOfStoreSymlink ./home/.config;
-  home.file.".config/FreeTube" = {
-    source = config.lib.file.mkOutOfStoreSymlink ./home/.config/FreeTube;
+  home.file.".config" = {
+    source = ./home/.config;
     recursive = true;
   };
 
   home.file.".local" = {
-    source = config.lib.file.mkOutOfStoreSymlink ./home/.local;
+    source = ./home/.local;
     recursive = true;
   };
 
