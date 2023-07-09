@@ -137,20 +137,19 @@
     windowManager.awesome.enable = true;
   };
 
-  home.file.".zshrc".source = ./home/.zshrc;
-
+  home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink ./home/.zshrc;
   home.file.".gnupg" = {
-    source = ./home/.gnupg;
+    source = config.lib.file.mkOutOfStoreSymlink ./home/.gnupg;
     recursive = true;
   };
 
   home.file.".config" = {
-    source = ./home/.config;
+    source = config.lib.file.mkOutOfStoreSymlink ./home/.config;
     recursive = true;
   };
 
   home.file.".local" = {
-    source = ./home/.local;
+    source = config.lib.file.mkOutOfStoreSymlink ./home/.local;
     recursive = true;
   };
 
