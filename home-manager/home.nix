@@ -92,9 +92,16 @@
     alacritty
     firefox
     libqalculate
-    # libreoffice-fresh
+    libreoffice-fresh
     yt-dlp
     sonixd
+
+    # Input methods
+    fcitx5
+    # Japanese specific
+    fcitx5-mozc
+    fcitx5-anthy
+    anthy
 
     # Media
     imv
@@ -151,6 +158,7 @@
   
   services.emacs.enable = true;
   services.easyeffects.enable = true;
+  services.easyeffects.preset = "MonPetitProfil";
 
   home.sessionVariables = {
     # Hint electron apps to use wayland
@@ -188,12 +196,6 @@
   #   recursive = true;
   # };
 
-  # home.file.".config/mimeapps.list".source = config.lib.file.mkOutOfStoreSymlink ./home/.config;
-  home.file.".config/FreeTube" = {
-    source = config.lib.file.mkOutOfStoreSymlink ./home/.config/FreeTube;
-    recursive = true;
-  };
-
   # home.file.".local" = {
   #   source = ./home/.local;
   #   recursive = true;
@@ -212,6 +214,16 @@
 
   home.file.".local" = {
     source = ./home/.local;
+    recursive = true;
+  };
+
+  home.file.".config/mimeapps.list".source = config.lib.file.mkOutOfStoreSymlink ./home/.config;
+  home.file.".config/FreeTube" = {
+    source = ./home/.config/FreeTube;
+    recursive = true;
+  };
+  home.file.".config/easyeffects" = {
+    source = ./home/.config/easyeffects;
     recursive = true;
   };
 

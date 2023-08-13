@@ -329,6 +329,7 @@
     # partitions created by arch requires a feature not available in stable
     unstable.e2fsprogs
 
+    glib
     polkit_gnome
     vim
     wget
