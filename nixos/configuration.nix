@@ -281,7 +281,7 @@
   time.timeZone = "Europe/Paris";
 
   environment = {
-    variables = {
+    sessionVariables = {
       # Use qt5ct for theming QT apps
       QT_QPA_PLATFORMTHEME = "qt5ct";
       # Java applications fix, i don't remember for what
@@ -374,7 +374,7 @@
           Restart = "on-failure";
           RestartSec = 1;
           TimeoutStopSec = 10;
-        };
+      };
     };
   };
 
@@ -384,8 +384,8 @@
       cantarell-fonts
       noto-fonts
       jetbrains-mono
-      # winePackages.fonts
-      # nerdfonts
+      winePackages.fonts
+      nerdfonts
       # google-fonts
     ];
   };

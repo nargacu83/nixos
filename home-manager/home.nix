@@ -44,8 +44,10 @@
   home.packages = with pkgs; [
     # Diff tool for nix packages
     nvd
-
     gitui
+
+    pciutils
+    networkmanagerapplet
 
     # Devices
     radeontop
@@ -95,6 +97,7 @@
     libreoffice-fresh
     yt-dlp
     sonixd
+    nextcloud-client
 
     # Input methods
     fcitx5
@@ -112,12 +115,11 @@
     inkscape
 
     # Development
-    emacs
+    emacs-gtk
     emacsPackages.vterm
     ripgrep
     fd
     cmake
-
     vscodium
     blender
     unstable.godot_4
@@ -126,14 +128,17 @@
     jdk
     hugo
     cargo
+    unstable.unityhub
 
     # Gaming
+    unstable.mesa
     gamemode
     mangohud
     unstable.lutris
     steam
 
     # Themes
+    gnome.adwaita-icon-theme
     dracula-theme
     dracula-icon-theme
   ];
@@ -157,8 +162,10 @@
   };
   
   services.emacs.enable = true;
-  services.easyeffects.enable = true;
-  services.easyeffects.preset = "MonPetitProfil";
+  services.easyeffects = {
+    enable = true;
+    preset = "MonPetitProfil";
+  };
 
   home.sessionVariables = {
     # Hint electron apps to use wayland
@@ -180,8 +187,10 @@
       name = "Dracula";
       package = pkgs.dracula-theme;
     };
+    cursorTheme = {
+      name = "Adwaita";
+    };
   };
-
   qt = {
     enable = true;
     platformTheme = "gtk";
@@ -190,14 +199,19 @@
       package = pkgs.dracula-theme;
     };
   };
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      gtk-theme = "Dracula";
+      icon-theme = "Dracula";
+    };
+    "org/gnome/desktop/wm/preferences" = {
+      theme = "Dracula";
+    };
+  };
   # home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink ./home/.zshrc;
   # home.file.".gnupg" = {
   #   source = config.lib.file.mkOutOfStoreSymlink ./home/.gnupg;
-  #   recursive = true;
-  # };
-
-  # home.file.".local" = {
-  #   source = ./home/.local;
   #   recursive = true;
   # };
 
@@ -218,10 +232,6 @@
   };
 
   home.file.".config/mimeapps.list".source = config.lib.file.mkOutOfStoreSymlink ./home/.config;
-  home.file.".config/FreeTube" = {
-    source = ./home/.config/FreeTube;
-    recursive = true;
-  };
   home.file.".config/easyeffects" = {
     source = ./home/.config/easyeffects;
     recursive = true;

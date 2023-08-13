@@ -1,5 +1,5 @@
 # Doom emacs
-export PATH="$HOME/.emacs.d/bin:$PATH"
+export PATH="$HOME/.config/emacs/bin:$PATH"
 # Created by `pipx` on 2021-04-03 19:28:24
 export PATH="$PATH:/home/quentin/.local/bin"
 
