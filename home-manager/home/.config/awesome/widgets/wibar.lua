@@ -68,7 +68,6 @@ function wibar.get(s)
                     mycpu,
                     mygpu,
                     mymemory,
-                    myarchupdates,
                     mysystray,
                 }
             }

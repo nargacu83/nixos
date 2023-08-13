@@ -192,6 +192,65 @@
     cursorTheme = {
       name = "Adwaita";
     };
+    gtk3.extraConfig = {
+      # Dark theme
+      gtk-application-prefer-dark-theme = true;
+
+      # Remove min-max-close buttons
+      gtk-decoration-layout = "";
+
+      # Disable middle-click paste
+      gtk-enable-primary-paste = false;
+
+      # Disable events sounds
+      gtk-enable-event-sounds = 0;
+      gtk-enable-input-feedback-sounds = 0;
+
+      # Disable recent files
+      gtk-recent-files-limit = 0;
+      gtk-recent-files-max-age = 0;
+
+      # Prevent blurry font
+      gtk-xft-antialias = 1;
+      gtk-xft-dpi = 98304;
+      gtk-xft-hinting = 1;
+      gtk-xft-hintstyle = "hintfull";
+      gtk-xft-rgba = "none";
+      gtk-hint-font-metrics = 1;
+
+      # Don't know what it does but hey, at least it's here
+      gtk-primary-button-warps-slider=false;
+    };
+
+    gtk4.extraConfig = {
+      # Dark theme
+      gtk-application-prefer-dark-theme = true;
+
+      # Remove min-max-close buttons
+      gtk-decoration-layout = "";
+
+      # Disable middle-click paste
+      gtk-enable-primary-paste = false;
+
+      # Disable events sounds
+      gtk-enable-event-sounds = 0;
+      gtk-enable-input-feedback-sounds = 0;
+
+      # Disable recent files
+      gtk-recent-files-limit = 0;
+      gtk-recent-files-max-age = 0;
+
+      # Prevent blurry font
+      gtk-xft-antialias = 1;
+      gtk-xft-dpi = 98304;
+      gtk-xft-hinting = 1;
+      gtk-xft-hintstyle = "hintfull";
+      gtk-xft-rgba = "none";
+      gtk-hint-font-metrics = 1;
+
+      # Don't know what it does but hey, at least it's here
+      gtk-primary-button-warps-slider=false;
+    };
   };
   qt = {
     enable = true;
@@ -216,7 +275,7 @@
       button-layout = "";
     };
     # Disable events sounds
-    "/org/gnome/desktop/sound/event-sounds" = {
+    "org/gnome/desktop/sound" = {
       event-sounds = false;
       input-feedback-sounds = false;
     };
