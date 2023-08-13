@@ -5,4 +5,4 @@ Icon=firefox
 Type=Application
 Categories=Network;InstantMessaging;
 StartupWMClass=discord
-Exec=/usr/lib/firefox/firefox -P social --class=discord
+Exec=firefox -P social --class=discord
