@@ -98,6 +98,7 @@
     yt-dlp
     sonixd
     nextcloud-client
+    syncplay
 
     # Input methods
     fcitx5
@@ -138,6 +139,7 @@
     steam
 
     # Themes
+    gnome.dconf-editor
     gnome.adwaita-icon-theme
     dracula-theme
     dracula-icon-theme
@@ -204,9 +206,24 @@
       color-scheme = "prefer-dark";
       gtk-theme = "Dracula";
       icon-theme = "Dracula";
+
+      # Disable middle-click paste
+      gtk-enable-primary-paste = false;
     };
+    # Remove min-max-close buttons
     "org/gnome/desktop/wm/preferences" = {
       theme = "Dracula";
+      button-layout = "";
+    };
+    # Disable events sounds
+    "/org/gnome/desktop/sound/event-sounds" = {
+      event-sounds = false;
+      input-feedback-sounds = false;
+    };
+    # Disable recent files
+    "org/gnome/desktop/privacy" = {
+      remember-recent-files = false;
+      recent-files-max-age = 0;
     };
   };
   # home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink ./home/.zshrc;
