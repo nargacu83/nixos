@@ -12,6 +12,7 @@
     inputs.home-manager.nixosModules.home-manager
 
     # You can also split up your configuration and import pieces of it here:
+    ./lightdm
     # ./users.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
@@ -242,15 +243,15 @@
     firewall.enable = false;
   };
 
-  # services.printing = {
-  #   enable = true;
-  #   drivers = with pkgs; [
-  #     epson-escpr
-  #     epson-escpr2
-  #   ];
-  #   browsing = true;
-  #   defaultShared = false;
-  # };
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      epson-escpr
+      epson-escpr2
+    ];
+    browsing = true;
+    defaultShared = false;
+  };
 
   # services.blueman.enable = true;
   hardware = {
@@ -259,6 +260,7 @@
       driSupport = true;
       extraPackages = with pkgs; [
         rocm-opencl-icd
+        libva
       ];
     };
   };
@@ -303,32 +305,6 @@
         accelSpeed = "0";
       };
     };
-
-    displayManager.lightdm = {
-      enable = true;
-      background = ./lightdm/background.png;
-
-      greeters.gtk = {
-        enable = true;
-        cursorTheme.name = "Adwaita";
-        # font = {
-        #   name = "Cantarell 10";
-        #   package = pkgs.cantarell-fonts;
-        # };
-        iconTheme = {
-          name = "Dracula";
-          package = pkgs.dracula-icon-theme;
-        };
-        theme = {
-          name = "Dracula";
-          package = pkgs.dracula-theme;
-        };
-        indicators = [ "~session" "~power" ];
-        extraConfig = ''
-          hide-user-image = true
-        '';
-      };
-  };
 
     windowManager.awesome = {
       enable = true;
