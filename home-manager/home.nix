@@ -42,6 +42,9 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
+    # Diff tool for nix packages
+    nvd
+
     gitui
 
     # Devices
@@ -54,6 +57,7 @@
     maim
     xclip
     nitrogen
+    xcb-util-cursor
 
     # Wayland
     hyprland
@@ -77,6 +81,8 @@
     gnome.nautilus
     gvfs
     gnome.file-roller
+    gparted
+    gnome.gnome-disk-utility
 
     # Programs
     dunst
@@ -88,6 +94,7 @@
     libqalculate
     # libreoffice-fresh
     yt-dlp
+    sonixd
 
     # Media
     imv
@@ -98,6 +105,13 @@
     inkscape
 
     # Development
+    emacs
+    emacsPackages.vterm
+    ripgrep
+    fd
+    cmake
+
+    vscodium
     blender
     unstable.godot_4
     scons
@@ -109,7 +123,7 @@
     # Gaming
     gamemode
     mangohud
-    lutris
+    unstable.lutris
     steam
 
     # Themes
@@ -134,7 +148,40 @@
   xsession = {
     windowManager.awesome.enable = true;
   };
+  
+  services.emacs.enable = true;
+  services.easyeffects.enable = true;
 
+  home.sessionVariables = {
+    # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
+  };
+
+  fonts.fontconfig.enable = true;
+  gtk = {
+    enable = true;
+    font = {
+      name = "Cantarell 10";
+      package = pkgs.cantarell-fonts;
+    };
+    iconTheme = {
+      name = "Dracula";
+      package = pkgs.dracula-icon-theme;
+    };
+    theme = {
+      name = "Dracula";
+      package = pkgs.dracula-theme;
+    };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
+    style = {
+      name = "Dracula";
+      package = pkgs.dracula-theme;
+    };
+  };
   # home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink ./home/.zshrc;
   # home.file.".gnupg" = {
   #   source = config.lib.file.mkOutOfStoreSymlink ./home/.gnupg;
@@ -142,10 +189,10 @@
   # };
 
   # home.file.".config/mimeapps.list".source = config.lib.file.mkOutOfStoreSymlink ./home/.config;
-  # home.file.".config" = {
-  #   source = config.lib.file.mkOutOfStoreSymlink ./home/.config/FreeTube;
-  #   recursive = true;
-  # };
+  home.file.".config/FreeTube" = {
+    source = config.lib.file.mkOutOfStoreSymlink ./home/.config/FreeTube;
+    recursive = true;
+  };
 
   # home.file.".local" = {
   #   source = ./home/.local;

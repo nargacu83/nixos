@@ -41,14 +41,6 @@ if [ -x "$(command -v gammastep-indicator)" ]; then
   gammastep-indicator &
 fi
 
-if [ -x "$(command -v emacs)" ]; then
-  systemctl --user is-active --quiet emacs || systemctl --user restart emacs
-fi
-
-if [ -x "$(command -v easyeffects)" ]; then
-  systemctl --user is-active --quiet easyeffects || systemctl --user restart easyeffects
-fi
-
 #start polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
