@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 ## Run
-rofi -show drun -theme launcher.rasi
+rofi -modi drun -show drun -theme launcher.rasi

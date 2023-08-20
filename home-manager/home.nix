@@ -64,6 +64,7 @@
     # Wayland
     hyprland
     waybar
+    swww
 
     # Archive
     unzip
@@ -91,6 +92,7 @@
     gammastep
     btop
     rofi-wayland
+    grim
     alacritty
     firefox
     libqalculate
@@ -129,7 +131,6 @@
     jdk
     hugo
     cargo
-    unstable.unityhub
 
     # Gaming
     unstable.mesa
@@ -146,7 +147,6 @@
   ];
 
   programs.home-manager.enable = true;
-
   programs.git = {
     enable = true;
     userName  = "Quentin Franchi";
@@ -162,7 +162,7 @@
   xsession = {
     windowManager.awesome.enable = true;
   };
-  
+
   services.emacs.enable = true;
   services.easyeffects = {
     enable = true;

@@ -1,14 +1,4 @@
 #!/usr/bin/env sh
-export XDG_CURRENT_DESKTOP=Hyprland
-export XDG_SESSION_TYPE=wayland
-export XDG_SESSION_DESKTOP=Hyprland
-export QT_QPA_PLATFORM=wayland;xcb
-export QT_QPA_PLATFORMTHEME=qt5ct
-export _JAVA_AWT_WM_NONREPARENTING=1
-export GTK_IM_MODULE='fcitx'
-export QT_IM_MODULE='fcitx'
-export XMODIFIERS='@im=fcitx'
-
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 # wallpaper
@@ -38,9 +28,6 @@ fi
 if [ -x "$(command -v nm-applet)" ]; then
   nm-applet --indicator &
 fi
-
-#start polkit
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # # bluetooth TODO: Find alternative that support Wayland.
 # if [ -x "$(command -v blueman-applet)" ]; then

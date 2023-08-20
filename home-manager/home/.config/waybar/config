@@ -9,7 +9,7 @@
 
     "modules-left": ["clock#calendar", "clock"],
     "modules-center": ["wlr/workspaces"],
-    "modules-right": ["cpu", "custom/gpu", "custom/memory", "custom/updates",  "tray"],
+    "modules-right": ["cpu", "custom/gpu", "custom/memory",  "tray"],
 
     // Modules configuration
     "wlr/workspaces": {
@@ -86,23 +86,15 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/updates": {
-        "format": "  {}",
-        "interval": 3600,                     // every two hours
-        "exec": "i=$(checkupdates); echo \"$i\" |wc -l; echo \"$i\" |column -t |tr '\n' '\r'",       // # of updates and tooltip details
-        "exec-if": "exit 0",                  // always run; consider advanced run conditions
-        "on-click": "alacritty -e update-system", // update system
-        "signal": 8
-    },
     "custom/memory": {
-        "exec": "$HOME/.config/waybar/scripts/memory.sh",
+        "exec": "$HOME/.local/bin/mem-usage",
         "interval": 2,
         "format": "   {}",
         "tooltip": false,
         "on-click": "alacritty -e btop",
     },
     "custom/gpu": {
-        "exec": "$HOME/.config/waybar/scripts/gpu.sh",
+        "exec": "$HOME/.local/bin/gpu-usage",
         "interval": 2,
         "format": "  {}",
         "tooltip": false,

@@ -7,7 +7,7 @@ local icon = {
   widget = wibox.container.place,
   {
     widget = wibox.widget.imagebox,
-    image = os.getenv("HOME") .. "/.config/awesome/theme/icons/cpu.svg",
+    image = os.getenv("HOME") .. "/.config/awesome/theme/icons/bar-chart-2.svg",
     forced_width = 15,
     resize = true,
   },
