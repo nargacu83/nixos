@@ -52,3 +52,5 @@ fi
 if [ -x "$(command -v fcitx5)" ]; then
   fcitx5 -d &
 fi
+
+systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service
