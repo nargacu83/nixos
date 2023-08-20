@@ -13,6 +13,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     ./lightdm
+    ./video.nix
     # ./users.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
@@ -353,6 +354,7 @@
   xdg.portal = {
     enable = true;
     # wlr.enable = true;
+    xdgOpenUsePortal = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
