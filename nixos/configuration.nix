@@ -14,6 +14,7 @@
     # You can also split up your configuration and import pieces of it here:
     ./lightdm
     ./video.nix
+    ./systemd.nix
     # ./users.nix
 
     # Import your generated (nixos-generate-config) hardware configuration

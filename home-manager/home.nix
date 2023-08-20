@@ -9,6 +9,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    ./xdg.nix
   ];
 
   nixpkgs = {
@@ -237,7 +238,6 @@
       gtk-enable-input-feedback-sounds = 0;
 
       # Disable recent files
-      gtk-recent-files-limit = 0;
       gtk-recent-files-max-age = 0;
 
       # Prevent blurry font
@@ -291,6 +291,7 @@
   #   recursive = true;
   # };
 
+
   home.file.".zshrc".source = ./home/.zshrc;
   home.file.".gnupg" = {
     source = ./home/.gnupg;
@@ -307,7 +308,7 @@
     recursive = true;
   };
 
-  home.file.".config/mimeapps.list".source = config.lib.file.mkOutOfStoreSymlink ./home/.config;
+  # home.file.".config/mimeapps.list".source = config.lib.file.mkOutOfStoreSymlink ./home/.config;
   home.file.".config/easyeffects" = {
     source = ./home/.config/easyeffects;
     recursive = true;
