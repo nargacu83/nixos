@@ -43,6 +43,7 @@
         "defaults"
         "nofail"
         "noauto"
+        "x-gvfs-show"
       ];
     };
 
@@ -71,6 +72,7 @@
         "defaults"
         "nofail"
         "noauto"
+        "x-gvfs-show"
       ];
     };
 
@@ -81,6 +83,7 @@
         "defaults"
         "nofail"
         "noauto"
+        "x-gvfs-show"
       ];
     };
 
