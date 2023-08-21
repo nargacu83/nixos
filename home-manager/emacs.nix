@@ -1,11 +1,15 @@
 { config, lib, pkgs, ... }:
 
 {
+  # services.emacs = {
+  #   enable = true;
+  #   package = pkgs.emacs-pgtk;
+  # };
+
   home.packages = with pkgs; [
     binutils
     gnutls
 
-    emacs-gtk
     emacsPackages.vterm
     ripgrep
     fd

@@ -17,6 +17,7 @@
   nixpkgs = {
     # You can add overlays here
     overlays = [
+      outputs.overlays.unstable-packages
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
@@ -26,7 +27,6 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
-      outputs.overlays.unstable-packages
     ];
     # Configure your nixpkgs instance
     config = {
@@ -63,6 +63,7 @@
     xclip
     nitrogen
     xcb-util-cursor
+    xorg.xkill
 
     # Wayland
     hyprland
@@ -109,9 +110,7 @@
     # Media
     imv
     mpv
-    freetube
     gimp
-    krita
     inkscape
 
     # Development
@@ -154,11 +153,6 @@
   xsession = {
     enable = true;
     windowManager.awesome.enable = true;
-  };
-
-  services.emacs = {
-    enable = true;
-    package = pkgs.emacs-gtk;
   };
 
   services.easyeffects = {

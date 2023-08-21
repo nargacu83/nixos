@@ -1,19 +1,14 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    binutils
-    gnutls
-
-    emacs-gtk
-    emacsPackages.vterm
-    ripgrep
-    fd
-
-    # in-emacs gnupg prompts
-    pinentry_emacs
-    zstd
+  environment.systemPackages = with pkgs; [
+    emacs29-pgtk
   ];
+
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs29-pgtk;
+  };
 
   systemd.user.services.emacs.path = [ "$XDG_CONFIG_HOME/emacs/bin" ];
 }
