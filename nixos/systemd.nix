@@ -5,7 +5,10 @@
     user = {
       extraConfig = ''
         DefaultEnvironment="PATH=/run/current-system/sw/bin"
+        DefaultLimitNOFILE=1048576
       '';
+
+      # Polkit GTK
       services.polkit-gnome-authentication-agent-1 = {
         description = "polkit-gnome-authentication-agent-1";
         wantedBy = [ "graphical-session.target" ];

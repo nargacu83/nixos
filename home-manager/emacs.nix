@@ -1,23 +1,27 @@
 { config, lib, pkgs, ... }:
 
 {
-  # services.emacs = {
-  #   enable = true;
-  #   package = pkgs.emacs-pgtk;
-  # };
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs-gtk;
+  };
 
   home.packages = with pkgs; [
     binutils
     gnutls
-
-    emacsPackages.vterm
     ripgrep
     fd
+
+    emacs-gtk
+    emacsPackages.vterm
 
     # in-emacs gnupg prompts
     pinentry_emacs
     zstd
+    
+    # C#
+    emacsPackages.dotnet
+    mono
   ];
 
-  # systemd.user.services.emacs.path = [ "$XDG_CONFIG_HOME/emacs/bin" ];
 }

@@ -16,7 +16,6 @@
     ./lightdm
     ./video.nix
     ./systemd.nix
-    ./emacs.nix
     # ./users.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
@@ -27,6 +26,7 @@
     # You can add overlays here
     overlays = [
       outputs.overlays.unstable-packages
+      
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
@@ -247,14 +247,14 @@
       cache32Bit = true;
       hinting.enable = true;
       hinting.autohint = true;
-      defaultFonts = {
-        monospace = [ "JetBrains Mono" ];
-        sansSerif = [ "Noto Sans" ];
-        serif = [
-          "Noto Sans"
-          "ipafont"
-        ];
-      };
+      # defaultFonts = {
+      #   monospace = [ "JetBrains Mono" ];
+      #   sansSerif = [ "Noto Sans" ];
+      #   serif = [
+      #     "Noto Sans"
+      #     "ipafont"
+      #   ];
+      # };
     };
   };
 

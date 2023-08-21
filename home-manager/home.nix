@@ -125,9 +125,8 @@
     cargo
 
     # Gaming
+    attr
     unstable.mesa
-    gamemode
-    mangohud
     unstable.lutris
 
     # Themes
@@ -142,6 +141,10 @@
     enable = true;
     userName  = "Quentin Franchi";
     userEmail = "dev.quentinfranchi@protonmail.com";
+    signing = {
+      signByDefault = true;
+      key = "D83F9668BF7DDC45";
+    };
   };
 
   programs.starship = {
