@@ -10,6 +10,8 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     ./xdg.nix
+    ./emacs.nix
+    ./wine.nix
   ];
 
   nixpkgs = {
@@ -65,6 +67,7 @@
     # Wayland
     hyprland
     waybar
+    slurp
     swww
 
     # Archive
@@ -103,13 +106,6 @@
     nextcloud-client
     syncplay
 
-    # Input methods
-    fcitx5
-    # Japanese specific
-    fcitx5-mozc
-    fcitx5-anthy
-    anthy
-
     # Media
     imv
     mpv
@@ -119,10 +115,6 @@
     inkscape
 
     # Development
-    emacs-gtk
-    emacsPackages.vterm
-    ripgrep
-    fd
     cmake
     vscodium
     blender
@@ -138,7 +130,6 @@
     gamemode
     mangohud
     unstable.lutris
-    steam
 
     # Themes
     gnome.dconf-editor
@@ -161,13 +152,28 @@
   };
 
   xsession = {
+    enable = true;
     windowManager.awesome.enable = true;
   };
 
-  services.emacs.enable = true;
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs-gtk;
+  };
+
   services.easyeffects = {
     enable = true;
     preset = "MonPetitProfil";
+  };
+
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-gtk
+        # Japanese specific
+        fcitx5-anthy
+    ];
   };
 
   home.sessionVariables = {
@@ -175,7 +181,15 @@
     NIXOS_OZONE_WL = "1";
   };
 
+  home.pointerCursor = {
+    name = "Adwaita";
+    size = 16;
+    package = pkgs.gnome.adwaita-icon-theme;
+    gtk.enable = true;
+  };
+
   fonts.fontconfig.enable = true;
+
   gtk = {
     enable = true;
     font = {
@@ -189,9 +203,6 @@
     theme = {
       name = "Dracula";
       package = pkgs.dracula-theme;
-    };
-    cursorTheme = {
-      name = "Adwaita";
     };
     gtk3.extraConfig = {
       # Dark theme
@@ -216,7 +227,7 @@
       gtk-xft-dpi = 98304;
       gtk-xft-hinting = 1;
       gtk-xft-hintstyle = "hintfull";
-      gtk-xft-rgba = "none";
+      gtk-xft-rgba = "rgb";
       gtk-hint-font-metrics = 1;
 
       # Don't know what it does but hey, at least it's here
@@ -245,7 +256,7 @@
       gtk-xft-dpi = 98304;
       gtk-xft-hinting = 1;
       gtk-xft-hintstyle = "hintfull";
-      gtk-xft-rgba = "none";
+      gtk-xft-rgba = "rbg";
       gtk-hint-font-metrics = 1;
 
       # Don't know what it does but hey, at least it's here
@@ -265,6 +276,7 @@
       color-scheme = "prefer-dark";
       gtk-theme = "Dracula";
       icon-theme = "Dracula";
+      font-hinting = "full";
 
       # Disable middle-click paste
       gtk-enable-primary-paste = false;
