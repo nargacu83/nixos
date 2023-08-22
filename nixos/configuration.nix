@@ -185,6 +185,8 @@
     };
   };
 
+  services.ratbagd.enable = true;
+
   # Wayland
   programs.hyprland = {
     enable = true;
