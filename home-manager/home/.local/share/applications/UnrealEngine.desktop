@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=UnrealEngine
-Exec=/mnt/PERSO/Unreal/5.2.0/Engine/Binaries/Linux/UnrealEditor %U
+Exec=steam-run /mnt/PERSO/Unreal/5.2.0/Engine/Binaries/Linux/UnrealEditor %U
 Terminal=false
 Type=Application
 Icon=unreal-engine
