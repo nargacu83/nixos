@@ -123,7 +123,7 @@
     docker
     jdk
     hugo
-
+    steam-run
 
     # Rust
     cargo

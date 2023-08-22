@@ -212,6 +212,8 @@
     git-lfs
     docker
 
+    # Appimages
+    appimage-run
     fuse
 
     # Gaming

@@ -6,9 +6,10 @@ local dpi = xresources.apply_dpi
 
 local taglist = {}
 
-local tag_width = 30
-local tag_height = 6
-local tag_shape = function (cr, w, h) gears.shape.rounded_rect(cr, w, h, 3) end
+local tag_width = 60
+local tag_height = 10
+-- local tag_shape = function (cr, w, h) gears.shape.rounded_rect(cr, w, h, 3) end
+local tag_shape = function (cr, w, h) gears.shape.rounded_bar(cr, w, h) end
 
 local taglist_buttons = gears.table.join(
     awful.button({ }, 1, function(t) t:view_only() end),
