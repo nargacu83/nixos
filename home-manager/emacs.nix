@@ -20,8 +20,9 @@
     zstd
     
     # C#
+    omnisharp-roslyn
+    emacsPackages.omnisharp
     emacsPackages.dotnet
     mono
   ];
-
 }

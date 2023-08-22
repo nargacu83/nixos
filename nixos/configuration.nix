@@ -16,6 +16,7 @@
     ./lightdm
     ./video.nix
     ./systemd.nix
+    ./wine.nix
     # ./users.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
@@ -26,7 +27,13 @@
     # You can add overlays here
     overlays = [
       outputs.overlays.unstable-packages
-      
+      # (self: super: {
+      #   lutris = super.lutris.override {
+      #     extraLibraries = pkgs: [
+      #       pkgs.libunwind
+      #     ];
+      #   };
+      # })
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
@@ -199,18 +206,32 @@
 
     zsh
     zsh-completions
+    zsh-syntax-highlighting
 
     git
     git-lfs
     docker
 
+    fuse
+
+    # Gaming
+    lutris
+    (lutris.override {
+      extraLibraries =  pkgs: [
+        pkgs.attr
+        pkgs.libunwind
+      ];
+    })
+    mesa
     gamemode
+    gamescope
     mangohud
   ];
 
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
     enableCompletion = true;
     histFile = "$XDG_CACHE_HOME/zsh.history";
   };
@@ -235,6 +256,12 @@
     fonts = with pkgs; [
       cantarell-fonts
       noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-emoji
+      dejavu_fonts
+      ubuntu_font_family
+      source-code-pro
       jetbrains-mono
       emacs-all-the-icons-fonts
       winePackages.fonts

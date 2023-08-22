@@ -9,9 +9,9 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    ./git.nix
     ./xdg.nix
     ./emacs.nix
-    ./wine.nix
   ];
 
   nixpkgs = {
@@ -86,6 +86,7 @@
     spice-vdagent
 
     # IO
+    cinnamon.nemo-with-extensions
     gnome.nautilus
     gvfs
     gnome.file-roller
@@ -117,17 +118,17 @@
     cmake
     vscodium
     blender
-    unstable.godot_4
+    # unstable.godot_4
     scons
     docker
     jdk
     hugo
-    cargo
 
-    # Gaming
-    attr
-    unstable.mesa
-    unstable.lutris
+
+    # Rust
+    cargo
+    rustc
+    rustfmt
 
     # Themes
     gnome.dconf-editor
@@ -137,15 +138,6 @@
   ];
 
   programs.home-manager.enable = true;
-  programs.git = {
-    enable = true;
-    userName  = "Quentin Franchi";
-    userEmail = "dev.quentinfranchi@protonmail.com";
-    signing = {
-      signByDefault = true;
-      key = "D83F9668BF7DDC45";
-    };
-  };
 
   programs.starship = {
     enable = true;
