@@ -54,6 +54,8 @@
         "text/csv" = [ "libreoffice-calc.desktop" ];
         "x-scheme-handler/freetube" = [ "freetube.desktop" ];
         "x-scheme-handler/unityhub" = [ "unityhub-handler.desktop" ];
+
+        "inode/directory" = [ "nemo.desktop" ];
       };
     };
   };
