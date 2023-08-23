@@ -27,13 +27,6 @@
     # You can add overlays here
     overlays = [
       outputs.overlays.unstable-packages
-      # (self: super: {
-      #   lutris = super.lutris.override {
-      #     extraLibraries = pkgs: [
-      #       pkgs.libunwind
-      #     ];
-      #   };
-      # })
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
@@ -220,12 +213,6 @@
 
     # Gaming
     lutris
-    (lutris.override {
-      extraLibraries =  pkgs: [
-        pkgs.attr
-        pkgs.libunwind
-      ];
-    })
     mesa
     gamemode
     gamescope
@@ -280,11 +267,8 @@
       hinting.autohint = true;
       # defaultFonts = {
       #   monospace = [ "JetBrains Mono" ];
-      #   sansSerif = [ "Noto Sans" ];
-      #   serif = [
-      #     "Noto Sans"
-      #     "ipafont"
-      #   ];
+      #   sansSerif = [ "Noto Serif" ];
+      #   serif = [ "Noto Sans" ];
       # };
     };
   };

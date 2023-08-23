@@ -123,7 +123,6 @@
     docker
     jdk
     hugo
-    steam-run
 
     # Rust
     cargo
@@ -171,9 +170,9 @@
   };
 
   home.pointerCursor = {
-    name = "Adwaita";
+    name = "Dracula-cursors";
     size = 16;
-    package = pkgs.gnome.adwaita-icon-theme;
+    package = pkgs.dracula-theme;
     gtk.enable = true;
   };
 
@@ -192,6 +191,9 @@
     theme = {
       name = "Dracula";
       package = pkgs.dracula-theme;
+    };
+    cursorTheme = {
+      name = "Dracula-cursors";
     };
     gtk3.extraConfig = {
       # Dark theme

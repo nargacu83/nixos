@@ -1,7 +1,6 @@
 [Desktop Entry]
-Name=UnrealEngine
-Exec=steam-run /mnt/PERSO/Unreal/5.2.0/Engine/Binaries/Linux/UnrealEditor %U
-Terminal=false
 Type=Application
-Icon=unreal-engine
-Comment=A 3D game engine by Epic Games which can be used non-commercially for free.
+Name=Unreal Engine 5
+Icon=lutris_unreal-engine-5
+Exec=env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/220
+Categories=Game
