@@ -17,6 +17,7 @@
     ./video.nix
     ./systemd.nix
     ./wine.nix
+    ./flatpak.nix
     # ./users.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
@@ -118,6 +119,7 @@
 
       # Hardware Acceleration
       extraPackages = with pkgs; [
+        rocm-runtime
         rocm-opencl-icd
         libva
       ];
@@ -143,19 +145,6 @@
   i18n.defaultLocale = "fr_FR.UTF-8";
   time.timeZone = "Europe/Paris";
 
-  environment = {
-    sessionVariables = {
-      # Use qt5ct for theming QT apps
-      QT_QPA_PLATFORMTHEME = "qt5ct";
-      # Java applications fix, i don't remember for what
-      _JAVA_AWT_WM_NONREPARENTING = "1";
-      # Multi languages keyboard
-      GTK_IM_MODULE = "fcitx";
-      QT_IM_MODULE = "fcitx";
-      XMODIFIERS = "@im=fcitx";
-    };
-  };
-
   # X11
   services.xserver = {
     enable = true;
@@ -169,12 +158,21 @@
       };
     };
 
-    windowManager.awesome = {
-      enable = true;
-      luaModules = with pkgs.luaPackages; [
-        luarocks # is the package manager for Lua modules
-        luadbi-mysql # Database abstraction layer
-      ];
+    windowManager = {
+      awesome = {
+        enable = true;
+        luaModules = with pkgs.luaPackages; [
+          luarocks # is the package manager for Lua modules
+          luadbi-mysql # Database abstraction layer
+        ];
+      };
+      # qtile = {
+      #   enable = true;
+      #   extraPackages = python3Packages: with python3Packages; [
+      #     python-lsp-server
+      #     qtile-extras
+      #   ];
+      # };
     };
   };
 
@@ -239,8 +237,6 @@
       xdg-utils
     ];
   };
-
-  services.flatpak.enable = true;
 
   fonts = {
     fontDir.enable = true;
