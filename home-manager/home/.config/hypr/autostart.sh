@@ -34,18 +34,20 @@ fi
 #   blueman-applet &
 # fi
 #
-if [ -x "$(command -v emacs)" ]; then
-  systemctl --user is-active --quiet emacs || systemctl --user restart emacs
-fi
+# if [ -x "$(command -v emacs)" ]; then
+#   systemctl --user is-active --quiet emacs || systemctl --user restart emacs
+# fi
 
-if [ -x "$(command -v easyeffects)" ]; then
-  systemctl --user is-active --quiet easyeffects || systemctl --user restart easyeffects
-fi
+# if [ -x "$(command -v easyeffects)" ]; then
+#   systemctl --user is-active --quiet easyeffects || systemctl --user restart easyeffects
+# fi
 
 # multilingual inputs
 if [ -x "$(command -v fcitx5)" ]; then
   fcitx5 -d &
 fi
+
+systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service
 
 # Atomic
 sleep 1

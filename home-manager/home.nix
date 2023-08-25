@@ -52,6 +52,10 @@
     pciutils
     networkmanagerapplet
 
+    libsForQt5.qt5ct
+    libsForQt5.qtstyleplugin-kvantum
+    unstable.qt6Packages.qt6ct
+
     # Devices
     radeontop
     piper
@@ -64,10 +68,10 @@
     nitrogen
     xcb-util-cursor
     xorg.xkill
+    numlockx
 
     # Wayland
     hyprland
-    waybar
     slurp
     swww
 
@@ -87,7 +91,6 @@
 
     # IO
     cinnamon.nemo-with-extensions
-    gnome.nautilus
     gvfs
     gnome.file-roller
     gparted
@@ -117,7 +120,7 @@
     # Development
     cmake
     vscodium
-    blender
+    blender-hip
     # unstable.godot_4
     scons
     docker
@@ -144,6 +147,14 @@
     enableBashIntegration = true;
   };
 
+  programs.waybar = {
+    enable = true;
+    # Enable Workspaces on Hyprland
+    package = pkgs.waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    });
+  };
+
   xsession = {
     enable = true;
     windowManager.awesome.enable = true;
@@ -154,25 +165,34 @@
     preset = "MonPetitProfil";
   };
 
-  i18n.inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [
-        fcitx5-mozc
-        fcitx5-gtk
-        # Japanese specific
-        fcitx5-anthy
-    ];
-  };
+  # i18n.inputMethod = {
+  #   enabled = "fcitx5";
+  #   fcitx5.addons = with pkgs; [
+  #       fcitx5-mozc
+  #       fcitx5-gtk
+  #       # Japanese specific
+  #       fcitx5-anthy
+  #   ];
+  # };
 
   home.sessionVariables = {
     # Hint electron apps to use wayland
-    NIXOS_OZONE_WL = "1";
+    # NIXOS_OZONE_WL = "1";
+    # Java applications fix, i don't remember for what
+    _JAVA_AWT_WM_NONREPARENTING = "1";
+    # Multi languages keyboard
+    # GTK_IM_MODULE = "fcitx";
+    # QT_IM_MODULE = "fcitx";
+    # XMODIFIERS = "@im=fcitx";
+    # QT Theme
+    # QT_STYLE_OVERRIDE = "gtk2";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
   home.pointerCursor = {
-    name = "Dracula-cursors";
+    name = "Bibata-Original-Classic";
     size = 16;
-    package = pkgs.dracula-theme;
+    package = pkgs.bibata-cursors;
     gtk.enable = true;
   };
 
@@ -193,7 +213,8 @@
       package = pkgs.dracula-theme;
     };
     cursorTheme = {
-      name = "Dracula-cursors";
+      name = "Bibata-Original-Classic";
+      package = pkgs.bibata-cursors;
     };
     gtk3.extraConfig = {
       # Dark theme
@@ -219,7 +240,6 @@
       gtk-xft-hinting = 1;
       gtk-xft-hintstyle = "hintfull";
       gtk-xft-rgba = "rgb";
-      gtk-hint-font-metrics = 1;
 
       # Don't know what it does but hey, at least it's here
       gtk-primary-button-warps-slider=false;
@@ -254,19 +274,12 @@
       gtk-primary-button-warps-slider=false;
     };
   };
-  qt = {
-    enable = true;
-    platformTheme = "gtk";
-    style = {
-      name = "Dracula";
-      package = pkgs.dracula-theme;
-    };
-  };
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       gtk-theme = "Dracula";
       icon-theme = "Dracula";
+      cursor-theme = "Bibata-Original-Classic";
       font-hinting = "full";
 
       # Disable middle-click paste
@@ -288,12 +301,19 @@
       recent-files-max-age = 0;
     };
   };
+
+  qt = {
+    enable = true;
+  };
+
   # home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink ./home/.zshrc;
   # home.file.".gnupg" = {
   #   source = config.lib.file.mkOutOfStoreSymlink ./home/.gnupg;
   #   recursive = true;
   # };
 
+  home.file.".icons/default".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Original-Classic";
+  home.file.".themes/default".source = "${pkgs.dracula-theme}/share/themes/Dracula";
 
   home.file.".zshrc".source = ./home/.zshrc;
   home.file.".gnupg" = {

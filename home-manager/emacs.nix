@@ -12,7 +12,7 @@
     ripgrep
     fd
 
-    emacs-gtk
+    emacs29-gtk3
     emacsPackages.vterm
 
     # in-emacs gnupg prompts
@@ -24,5 +24,8 @@
     emacsPackages.omnisharp
     emacsPackages.dotnet
     mono
+
+    # Python
+    python3Full
   ];
 }

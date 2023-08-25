@@ -169,4 +169,8 @@
 (setenv "FrameworkPathOverride" "/lib/mono/4.5")
 
 ;; XAML and Avalonia XAML
-(require 'nxml-mode (add-to-list 'auto-mode-alist '("\\.a?xaml\\'" . nxml-mode)))
+;; (require 'nxml-mode (add-to-list 'auto-mode-alist '("\\.a?xaml\\'" . nxml-mode)))
+
+(after! lsp-python-ms
+  (setq lsp-python-ms-executable (executable-find "python-language-server"))
+  (set-lsp-priority! 'mspyls 1))
