@@ -2,6 +2,10 @@
 
 {
   systemd = {
+    # Enable HIP for most softwares
+    tmpfiles.rules = [
+      "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
+    ];
     user = {
       extraConfig = ''
         DefaultEnvironment="PATH=/run/current-system/sw/bin"
