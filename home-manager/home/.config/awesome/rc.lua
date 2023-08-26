@@ -183,7 +183,7 @@ function update_clients_gaps(t)
 end
 
 --- Autostart
-awful.spawn.with_shell("~/.config/awesome/autostart.sh")
+awful.spawn.with_shell("~/.config/autostart.sh")
 
 -- Run garbage collector regularly to prevent memory leaks
 gears.timer {

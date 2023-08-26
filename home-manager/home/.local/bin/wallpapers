@@ -5,6 +5,11 @@
 #
 # NOTE: this script is in bash (not posix shell), because the shuf command
 
+if [ "$XDG_SESSION_TYPE" == "x11" ]; then
+	echo "This script is only for Wayland sessions."
+	exit 1
+fi
+
 if [[ $# -lt 1 ]] || [[ ! -d $1 ]]; then
 	echo "Usage:
 	$0 <dir containg images>"
