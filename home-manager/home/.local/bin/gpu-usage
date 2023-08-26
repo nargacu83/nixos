@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-
 used=$(cat /sys/class/hwmon/hwmon6/device/mem_info_vram_used)
 total=$(cat /sys/class/hwmon/hwmon6/device/mem_info_vram_total)
 # convert to MiB
