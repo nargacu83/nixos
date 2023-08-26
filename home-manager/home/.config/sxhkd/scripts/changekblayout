@@ -9,8 +9,8 @@ current_layout="$(setxkbmap -query | grep layout | awk '{print $2}')"
 
 if [ "${current_layout}" == "${default_layout}" ]; then
     setxkbmap ${second_layout}
-    notify-send "${prefix} ${second_layout}"
+    dunstify "${prefix} ${second_layout}"
 else
     setxkbmap ${default_layout}
-    notify-send "${prefix} ${default_layout}"
+    dunstify "${prefix} ${default_layout}"
 fi

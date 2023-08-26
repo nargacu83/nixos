@@ -1,14 +1,14 @@
 ## Common hotkeys
 
-# # terminal emulator
+# terminal emulator
 super + Return
 	alacritty
 
-# # launch file manager
+# launch file manager
 super + e
 	nemo
 
-# # kill session
+# kill session
 super + control + q
 	loginctl kill-session $XDG_SESSION_ID
 
