@@ -64,11 +64,11 @@
     picom-jonaburg
     sxhkd
     maim
-    xclip
-    nitrogen
     xcb-util-cursor
     xorg.xkill
     numlockx
+    xclip
+    nitrogen
 
     # Wayland
     hyprland

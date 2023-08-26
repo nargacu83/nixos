@@ -7,11 +7,14 @@
       "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
     ];
     user = {
+      # Make xdg-desktop-portal aware of each portals (should be upstreamed)
+      services.xdg-desktop-portal.environment = {
+        XDG_DESKTOP_PORTAL_DIR = config.environment.variables.XDG_DESKTOP_PORTAL_DIR;
+      };
       extraConfig = ''
         DefaultEnvironment="PATH=/run/current-system/sw/bin"
         DefaultLimitNOFILE=1048576
       '';
-
       # Polkit GTK
       services.polkit-gnome-authentication-agent-1 = {
         description = "polkit-gnome-authentication-agent-1";
