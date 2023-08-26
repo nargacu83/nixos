@@ -116,16 +116,23 @@
     mpv
     gimp
     inkscape
+    obs-studio
+    obs-studio-plugins.obs-gstreamer
+    obs-studio-plugins.obs-vaapi
+
+    lutris
+    mangohud
 
     # Development
     cmake
-    vscodium
-    blender-hip
-    # unstable.godot_4
     scons
     docker
     jdk
     hugo
+    blender-hip
+    # unstable.godot_4
+    unityhub
+    vscodium
 
     # Rust
     cargo
@@ -165,15 +172,16 @@
     preset = "MonPetitProfil";
   };
 
-  # i18n.inputMethod = {
-  #   enabled = "fcitx5";
-  #   fcitx5.addons = with pkgs; [
-  #       fcitx5-mozc
-  #       fcitx5-gtk
-  #       # Japanese specific
-  #       fcitx5-anthy
-  #   ];
-  # };
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-gtk
+        # Japanese specific
+        anthy
+        fcitx5-anthy
+    ];
+  };
 
   home.sessionVariables = {
     # Hint electron apps to use wayland
@@ -185,7 +193,7 @@
     # QT_IM_MODULE = "fcitx";
     # XMODIFIERS = "@im=fcitx";
     # QT Theme
-    # QT_STYLE_OVERRIDE = "gtk2";
+    QT_STYLE_OVERRIDE = "kvantum";
     QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
