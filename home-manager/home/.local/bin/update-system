@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+dotfiles_directory="~/nixos"
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+# Styles
+NC='\033[0m' # No Color
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+
+function print_message() {
+    echo -e "${BOLD}${2}==>${NC} ${BOLD}${1}${NORMAL}"
+}
+
+function ask {
+    read -r -p "${BOLD}:: ${1:-Are you sure?} [Y/n] " response
+    case "$response" in
+        [nN])
+            false
+            ;;
+        *)
+            true
+            ;;
+    esac
+}
+
+if ask "Do you want to update system?"; then
+    print_message "Updating flake..." ${BLUE}
+    nix flake update || exit
+
+    print_message "Rebuilding configuration..." ${BLUE}
+    sudo nixos-rebuild switch --flake $dotfiles_directory#nixos || exit
+fi
+
+if ask "Do you want to update Flatpaks?"; then
+    print_message "Checking for Flatpak updates..." ${BLUE}
+    flatpak update || exit
+fi
+
+if ask "Do you want to update Doom Emacs?"; then
+    print_message "Checking for Doom Emacs updates..." ${BLUE}
+    doom upgrade --force && doom sync && doom purge || exit
+    systemctl --user restart emacs
+fi
+
+print_message "Updates finished" ${GREEN}
