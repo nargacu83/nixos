@@ -119,6 +119,7 @@
 
       # Hardware Acceleration
       extraPackages = with pkgs; [
+        ocl-icd
         rocm-runtime
         rocm-opencl-icd
         libva
@@ -205,16 +206,16 @@
     git-lfs
     docker
 
+    radeontop
+
     # Appimages
     appimage-run
     fuse
 
     # Gaming
-    lutris
     mesa
     gamemode
     gamescope
-    mangohud
   ];
 
   programs.zsh = {
