@@ -26,8 +26,18 @@ flatpacks_theme=(
    "com.discordapp.Discord"
 )
 
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+# Styles
+NC='\033[0m' # No Color
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+
 function print_message() {
-    echo -e "${BOLD}${2} ==> ${NC} ${BOLD}${1}${NORMAL}"
+    echo -e "${BOLD}${GREEN} ==> ${NC} ${BOLD}${1}${NORMAL}"
 }
 
 function print_inner_message() {
