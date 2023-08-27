@@ -133,6 +133,8 @@
     # unstable.godot_4
     unityhub
     vscodium
+    # Workaround for Unreal Engine to generate C++
+    (pkgs.writeShellScriptBin "code" "exec -a $0 ${vscodium}/bin/codium $@")
 
     # Rust
     cargo
