@@ -1,0 +1,72 @@
+[Hotkey]
+# Énumérer lorsque vous appuyez plusieurs fois sur la touche de déclenchement
+EnumerateWithTriggerKeys=False
+# Basculer temporairement entre la première méthode de saisie et la méthode de saisie actuelle
+AltTriggerKeys=
+# Énumérer la méthode d'entrée vers l'avant
+EnumerateForwardKeys=
+# Énumérer la méthode d'entrée vers l'arrière
+EnumerateBackwardKeys=
+# Ignorer la première méthode de saisie lors de l'énumération
+EnumerateSkipFirst=False
+
+[Hotkey/TriggerKeys]
+0=Shift+Super+M
+1=Zenkaku_Hankaku
+2=Hangul
+
+[Hotkey/EnumerateGroupForwardKeys]
+0=Super+space
+
+[Hotkey/EnumerateGroupBackwardKeys]
+0=Shift+Super+space
+
+[Hotkey/ActivateKeys]
+0=Hangul_Hanja
+
+[Hotkey/DeactivateKeys]
+0=Hangul_Romaja
+
+[Hotkey/PrevPage]
+0=Up
+
+[Hotkey/NextPage]
+0=Down
+
+[Hotkey/PrevCandidate]
+0=Shift+Tab
+
+[Hotkey/NextCandidate]
+0=Tab
+
+[Hotkey/TogglePreedit]
+0=Control+Alt+P
+
+[Behavior]
+# Actif par défaut
+ActiveByDefault=False
+# Partager l'état de l'entrée
+ShareInputState=No
+# Afficher la pré-édition dans l'application
+PreeditEnabledByDefault=True
+# Afficher les informations sur la méthode d'entrée lors du changement de méthode d'entrée
+ShowInputMethodInformation=True
+# Afficher les informations sur la méthode d'entrée lors du changement de focus
+showInputMethodInformationWhenFocusIn=False
+# Afficher les informations sur la méthode d'entrée compacte
+CompactInputMethodInformation=True
+# Afficher les informations de la première méthode d'entrée
+ShowFirstInputMethodInformation=True
+# Taille de page par défaut
+DefaultPageSize=5
+# Ignorer l'option Xkb
+OverrideXkbOption=False
+# Option Xkb personnalisée
+CustomXkbOption=
+# Force Enabled Addons
+EnabledAddons=
+# Force Disabled Addons
+DisabledAddons=
+# Preload input method to be used by default
+PreloadInputMethod=True
+

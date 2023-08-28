@@ -287,10 +287,13 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
+      font-name = "Cantarell 10";
+      document-font-name = "Cantarell 10";
       gtk-theme = "Dracula";
       icon-theme = "Dracula";
       cursor-theme = "Bibata-Original-Classic";
       font-hinting = "full";
+      font-antialiasing = "rgba";
 
       # Disable middle-click paste
       gtk-enable-primary-paste = false;

@@ -12,7 +12,8 @@
     inputs.home-manager.nixosModules.home-manager
 
     # You can also split up your configuration and import pieces of it here:
-    ./grub.nix
+    # ./grub.nix
+    ./bootloader.nix
     ./lightdm
     ./video.nix
     ./systemd.nix
@@ -73,7 +74,6 @@
     };
   };
 
-  boot.loader.efi.canTouchEfiVariables = true;
 
   sound.enable = true;
   services.pipewire = {
@@ -167,18 +167,18 @@
           luadbi-mysql # Database abstraction layer
         ];
       };
-      # qtile = {
-      #   enable = true;
-      #   extraPackages = python3Packages: with python3Packages; [
-      #     python-lsp-server
-      #     qtile-extras
-      #   ];
-      # };
+      qtile = {
+        enable = true;
+        extraPackages = python3Packages: with python3Packages; [
+          python-lsp-server
+          python310Packages.cffi
+          python310Packages.cairocffi
+          python310Packages.dbus-next
+          python310Packages.xcffib
+        ];
+      };
     };
   };
-
-  services.ratbagd.enable = true;
-
   # Wayland
   programs.hyprland = {
     enable = true;
@@ -188,6 +188,8 @@
     };
     nvidiaPatches = false;
   };
+
+  services.ratbagd.enable = true;
 
   environment.systemPackages = with pkgs; [
     # partitions created by arch requires a feature not available in stable
@@ -230,7 +232,7 @@
 
   xdg.portal = {
     enable = true;
-    # wlr.enable = true;
+    wlr.enable = true;
     xdgOpenUsePortal = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
@@ -262,11 +264,11 @@
       cache32Bit = true;
       hinting.enable = true;
       hinting.autohint = true;
-      # defaultFonts = {
-      #   monospace = [ "JetBrains Mono" ];
-      #   sansSerif = [ "Noto Serif" ];
-      #   serif = [ "Noto Sans" ];
-      # };
+      defaultFonts = {
+        monospace = [ "JetBrains Mono" ];
+        sansSerif = [ "Cantarell" ];
+        # serif = [ "Noto Sans" ];
+      };
     };
   };
 
