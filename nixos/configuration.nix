@@ -171,10 +171,6 @@
         enable = true;
         extraPackages = python3Packages: with python3Packages; [
           python-lsp-server
-          python310Packages.cffi
-          python310Packages.cairocffi
-          python310Packages.dbus-next
-          python310Packages.xcffib
         ];
       };
     };
@@ -232,7 +228,7 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
+    wlr.enable = false;
     xdgOpenUsePortal = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland

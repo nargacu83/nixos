@@ -1,9 +1,12 @@
 #!/usr/bin/env sh
 
+resolution="2560x1080"
+refresh_rate="100"
+
 if [ "$XDG_SESSION_TYPE" == "x11" ]; then
   #set resolution and refresh rate
   if [ -x "$(command -v xrandr)" ]; then
-    xrandr -s 2560x1080 -r 100
+    xrandr -s ${resolution} -r ${refresh_rate}
   fi
 
   #boot picom if it exists
@@ -33,6 +36,9 @@ if [ "$XDG_SESSION_TYPE" == "x11" ]; then
 elif [ "$XDG_SESSION_TYPE" == "wayland" ]; then
   QT_QPA_PLATFORM=qt5ct;wayland;xcb
   GDK_BACKEND=wayland
+
+  # Fix polkit not starting in wayland
+  /nix/store/fq1igqqj97dsp0b7wallm70sfd5y3vyl-polkit-gnome-0.105/libexec/polkit-gnome-authentication-agent-1 &
 
   # Hyprland specific
   if [ "$XDG_CURRENT_DESKTOP" == "Hyprland" ]; then
@@ -75,4 +81,5 @@ if [ -x "$(command -v fcitx5)" ]; then
 fi
 
 # Fixes xdg-open calls not opening links
-systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service
+systemctl --user import-environment PATH
+systemctl --user restart xdg-desktop-portal.service
