@@ -12,8 +12,8 @@
     ripgrep
     fd
 
-    # emacs29-pgtk # Wayland
-    emacs29-gtk3
+    emacs29-pgtk # Wayland
+    # emacs29-gtk3
     emacsPackages.vterm
 
     # in-emacs gnupg prompts
