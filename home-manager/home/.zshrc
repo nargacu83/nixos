@@ -65,6 +65,7 @@ ex ()
 ## Aliases
 
 alias ssh="TERM=linux ssh"
+alias doom="$HOME/.emacs.d/bin/doom"
 # alias vim='nvim'
 
 # youtoube
