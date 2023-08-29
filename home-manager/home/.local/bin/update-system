@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-dotfiles_directory="~/nixos"
-
 # Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -33,7 +31,7 @@ if ask "Do you want to update system?"; then
     nix flake update || exit
 
     print_message "Rebuilding configuration..." ${BLUE}
-    sudo nixos-rebuild switch --flake $dotfiles_directory#nixos || exit
+    sudo nixos-rebuild switch --flake $HOME/nixos#nixos || exit
 fi
 
 if ask "Do you want to update Flatpaks?"; then

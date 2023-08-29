@@ -12,6 +12,7 @@
     ripgrep
     fd
 
+    # emacs29-pgtk # Wayland
     emacs29-gtk3
     emacsPackages.vterm
 

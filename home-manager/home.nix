@@ -124,6 +124,10 @@
     mangohud
 
     # Development
+    python310Packages.cffi
+    python310Packages.cairocffi
+    python310Packages.dbus-next
+    python310Packages.xcffib
     cmake
     scons
     docker
