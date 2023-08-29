@@ -35,11 +35,12 @@ function get_images() {
 	done
 }
 
-# Shuffle images
-images=( $(shuf -e "${images[@]}") )
 
 while true; do
 	get_images $1
+
+	# Shuffle images
+	images=( $(shuf -e "${images[@]}") )
 
 	# Makes sure they are images
 	[ ${#images[@]} -eq 0 ] && echo "The given directory doesn't have images." && break
