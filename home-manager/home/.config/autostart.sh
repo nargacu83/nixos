@@ -33,12 +33,18 @@ if [ "$XDG_SESSION_TYPE" == "x11" ]; then
   if [ -x "$(command -v blueman-applet)" ]; then
     blueman-applet &
   fi
+
+  # #set night light
+  if [ -x "$(command -v gammastep-indicator)" ]; then
+    gammastep-indicator &
+  fi
+
 elif [ "$XDG_SESSION_TYPE" == "wayland" ]; then
   QT_QPA_PLATFORM=qt5ct;wayland;xcb
   GDK_BACKEND=wayland
 
   # Fix polkit not starting in wayland
-  /nix/store/fq1igqqj97dsp0b7wallm70sfd5y3vyl-polkit-gnome-0.105/libexec/polkit-gnome-authentication-agent-1 &
+  exec $(echo $(nix eval nixpkgs#polkit_gnome.outPath)/libexec/polkit-gnome-authentication-agent-1 | sed 's/"//g' &) &
 
   # Hyprland specific
   if [ "$XDG_CURRENT_DESKTOP" == "Hyprland" ]; then
@@ -58,16 +64,16 @@ elif [ "$XDG_SESSION_TYPE" == "wayland" ]; then
     wallpapers /mnt/DATA/Nextcloud/Wallpapers/Current/
   fi
 
+
+  # #set night light
+  if [ -x "$(command -v gammastep-indicator)" ]; then
+    gammastep-indicator -m wayland &
+  fi
 fi
 
 #start notification daemon
 if [ -x "$(command -v dunst)" ]; then
   dunst &
-fi
-
-# #set night light
-if [ -x "$(command -v gammastep-indicator)" ]; then
-  gammastep-indicator &
 fi
 
 # Network manager GUI
@@ -81,5 +87,5 @@ if [ -x "$(command -v fcitx5)" ]; then
 fi
 
 # Fixes xdg-open calls not opening links
-systemctl --user import-environment PATH
-systemctl --user restart xdg-desktop-portal.service
+# systemctl --user import-environment PATH
+# systemctl --user restart xdg-desktop-portal.service
