@@ -191,13 +191,13 @@
 
   home.sessionVariables = {
     # Hint electron apps to use wayland
-    # NIXOS_OZONE_WL = "1";
+    NIXOS_OZONE_WL = 1;
     # Java applications fix, i don't remember for what
     _JAVA_AWT_WM_NONREPARENTING = "1";
     # Multi languages keyboard
-    # GTK_IM_MODULE = "fcitx";
-    # QT_IM_MODULE = "fcitx";
-    # XMODIFIERS = "@im=fcitx";
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
     # QT Theme
     QT_STYLE_OVERRIDE = "kvantum";
     QT_QPA_PLATFORMTHEME = "qt5ct";

@@ -3,6 +3,8 @@
 resolution="2560x1080"
 refresh_rate="100"
 
+XCURSOR_SIZE=16
+
 if [ "$XDG_SESSION_TYPE" == "x11" ]; then
   #set resolution and refresh rate
   if [ -x "$(command -v xrandr)" ]; then
@@ -52,6 +54,8 @@ elif [ "$XDG_SESSION_TYPE" == "wayland" ]; then
     XDG_SESSION_TYPE=wayland
     XDG_SESSION_DESKTOP=Hyprland
     dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+    hyprctl setcursor $XCURSOR_THEME $XCURSOR_SIZE
 
     if [ -x "$(command -v waybar)" ]; then
       waybar &
