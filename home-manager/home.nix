@@ -229,6 +229,7 @@
     cursorTheme = {
       name = "Bibata-Original-Classic";
       package = pkgs.bibata-cursors;
+      size = 16;
     };
     gtk3.extraConfig = {
       # Dark theme
@@ -296,6 +297,7 @@
       gtk-theme = "Dracula";
       icon-theme = "Dracula";
       cursor-theme = "Bibata-Original-Classic";
+      cursor-size = 16;
       font-hinting = "full";
       font-antialiasing = "rgba";
 
