@@ -44,7 +44,9 @@ fi
 
 if ask "Do you want to update Doom Emacs?"; then
     print_message "Checking for Doom Emacs updates..." ${BLUE}
-    doom upgrade --force && doom sync && doom purge || exit
+    ${HOME}/.emacs.d/bin/doom upgrade --force || exit
+    ${HOME}/.emacs.d/bin/doom sync || exit
+    ${HOME}/.emacs.d/bin/doom purge || exit
     systemctl --user restart emacs
 fi
 
