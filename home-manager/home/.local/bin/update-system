@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+config_directory="${HOME}/nixos"
+config_name="nixos"
+
 # Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -28,10 +31,10 @@ function ask {
 
 if ask "Do you want to update system?"; then
     print_message "Updating flake..." ${BLUE}
-    nix flake update || exit
+    nix flake update ${config_directory} || exit
 
     print_message "Rebuilding configuration..." ${BLUE}
-    sudo nixos-rebuild switch --flake $HOME/nixos#nixos || exit
+    sudo nixos-rebuild switch --flake ${config_directory}#${config_name} || exit
 fi
 
 if ask "Do you want to update Flatpaks?"; then
