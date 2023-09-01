@@ -11,7 +11,7 @@ if [ "$XDG_SESSION_TYPE" == "x11" ]; then
 
   #boot picom if it exists
   if [ -x "$(command -v picom)" ]; then
-    picom &
+    picom --daemon
   fi
 
   # sxhkd
@@ -52,6 +52,8 @@ elif [ "$XDG_SESSION_TYPE" == "wayland" ]; then
     XDG_SESSION_TYPE=wayland
     XDG_SESSION_DESKTOP=Hyprland
     dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+    hyprctl setcursor $XCURSOR_THEME $XCURSOR_SIZE
 
     if [ -x "$(command -v waybar)" ]; then
       waybar &
