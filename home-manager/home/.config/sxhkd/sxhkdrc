@@ -10,7 +10,7 @@ super + e
 
 # kill session
 super + control + q
-	loginctl kill-session $XDG_SESSION_ID
+	loginctl kill-session self
 
 # screenshots with rofi
 super + Print
