@@ -88,34 +88,38 @@ for i, (name, kwargs) in enumerate(group_names, 0):
     # Send current window to another group
     keys.append(Key([mod, "shift"], group_keys[i], lazy.window.togroup(name)))
 
-theme_colors = {
-    "fg_normal": "#f8f8f2",
-    "fg_focus": "#ffffff",
-    "bg_normal": "#282a36BF",
-    "bg_focus": "#bd93f9ee",
-    "bg_urgent": "#f8f8f2",
+
+theme = {
+    "border_width": 1,
+    "colors": {
+        "fg_normal": "#f8f8f2",
+        "fg_focus": "#ffffff",
+        "bg_normal": "#282a36BF",
+        "bg_focus": "#bd93f9ee",
+        "bg_urgent": "#f8f8f2",
+    },
 }
 
 layouts = [
     layout.MonadTall(
         new_client_position = "top",
-        border_width = 2,
-        margin = 2,
-        border_normal = theme_colors["bg_normal"],
-        border_focus = theme_colors["bg_focus"],
+        border_width = theme["border_width"],
+        margin = 4,
+        border_normal = theme["colors"]["bg_normal"],
+        border_focus = theme["colors"]["bg_focus"],
     ),
     layout.Max(
         only_focused = False,
         border_width = 0,
         margin = 0,
-        border_normal = theme_colors["bg_normal"],
-        border_focus = theme_colors["bg_focus"],
+        border_normal = theme["colors"]["bg_normal"],
+        border_focus = theme["colors"]["bg_focus"],
     ),
 ]
 
 widget_defaults = dict(
     font = "Cantarell Bold",
-    fontsize = 11,
+    fontsize = 14,
     padding = 5,
 )
 extension_defaults = widget_defaults.copy()
@@ -135,16 +139,24 @@ screens = [
                 widget.GroupBox(),
                 widget.Spacer(),
 
-                widget.GenPollCommand(
-                    cmd = "cpu-usage",
+                widget.GenPollText(
+                    func = lambda: subprocess.check_output("cpu-usage").decode('utf-8').strip(),
                     update_interval = 2
                 ),
-                widget.GenPollCommand(
-                    cmd = "gpu-usage",
+                widget.Sep(
+                    linewidth = 0,
+                    padding = 2
+                ),
+                widget.GenPollText(
+                    func = lambda: subprocess.check_output("gpu-usage").decode('utf-8').strip(),
                     update_interval = 2
                 ),
-                widget.GenPollCommand(
-                    cmd = "mem-usage",
+                widget.Sep(
+                    linewidth = 0,
+                    padding = 2
+                ),
+                widget.GenPollText(
+                    func = lambda: subprocess.check_output("mem-usage").decode('utf-8').strip(),
                     update_interval = 2
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
@@ -153,7 +165,8 @@ screens = [
                     padding = 5
                 ),
             ],
-            30,
+            35,
+            background = theme["colors"]["bg_normal"],
         ),
         # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
@@ -176,6 +189,9 @@ bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
+    border_width = theme["border_width"],
+    border_normal = theme["colors"]["bg_normal"],
+    border_focus = theme["colors"]["bg_focus"],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
@@ -216,6 +232,10 @@ floating_layout = layout.Floating(
         Match(wm_class='pinentry-gtk-2'), # GPG key password entry
         Match(wm_class='Tor Browser'),
         Match(wm_class='origin.exe'),
+
+        # Rules for Unity (bugged for the moment)
+        Match(title='UnityEditor.PopupWindow'),
+        Match(title='UnityEditor.AddComponent.AddComponentWindow'),
     ]
 )
 auto_fullscreen = True
