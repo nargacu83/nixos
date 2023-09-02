@@ -3,6 +3,11 @@
 resolution="2560x1080"
 refresh_rate="100"
 
+# launch the given program in the background only if an instance isn't already running
+function launch_once() {
+  ps x | grep -v grep | grep ${1} &>/dev/null || ${1} &
+}
+
 if [ "$XDG_SESSION_TYPE" == "x11" ]; then
   #set resolution and refresh rate
   if [ -x "$(command -v xrandr)" ]; then
@@ -16,7 +21,7 @@ if [ "$XDG_SESSION_TYPE" == "x11" ]; then
 
   # sxhkd
   if [ -x "$(command -v sxhkd)" ]; then
-    sxhkd &
+    launch_once sxhkd
   fi
 
   # enable numlock
@@ -36,7 +41,7 @@ if [ "$XDG_SESSION_TYPE" == "x11" ]; then
 
   # #set night light
   if [ -x "$(command -v gammastep-indicator)" ]; then
-    gammastep-indicator &
+    launch_once gammastep-indicator
   fi
 
 elif [ "$XDG_SESSION_TYPE" == "wayland" ]; then
@@ -89,5 +94,4 @@ if [ -x "$(command -v fcitx5)" ]; then
 fi
 
 # Fixes xdg-open calls not opening links
-# systemctl --user import-environment PATH
-# systemctl --user restart xdg-desktop-portal.service
+systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service
