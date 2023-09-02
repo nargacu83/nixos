@@ -328,6 +328,10 @@
   #   recursive = true;
   # };
 
+  home.file.".icons" = {
+    source = ./home/.icons;
+    recursive = true;
+  };
   home.file.".icons/default".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Original-Classic";
   home.file.".themes/default".source = "${pkgs.dracula-theme}/share/themes/Dracula";
 
