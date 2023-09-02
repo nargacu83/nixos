@@ -108,6 +108,7 @@
     libreoffice-fresh
     yt-dlp
     sonixd
+    unstable.feishin
     nextcloud-client
     syncplay
 
@@ -124,10 +125,6 @@
     mangohud
 
     # Development
-    python310Packages.cffi
-    python310Packages.cairocffi
-    python310Packages.dbus-next
-    python310Packages.xcffib
     cmake
     scons
     docker
@@ -168,10 +165,10 @@
     });
   };
 
-  xsession = {
-    enable = true;
-    windowManager.awesome.enable = true;
-  };
+  # xsession = {
+  #   enable = true;
+  #   windowManager.awesome.enable = true;
+  # };
 
   services.easyeffects = {
     enable = true;

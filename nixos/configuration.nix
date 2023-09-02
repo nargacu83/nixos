@@ -61,8 +61,8 @@
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
 
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+      # substituters = ["https://hyprland.cachix.org"];
+      # trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
   };
 
@@ -169,21 +169,18 @@
       };
       qtile = {
         enable = true;
-        extraPackages = python3Packages: with python3Packages; [
-          python-lsp-server
-        ];
       };
     };
   };
   # Wayland
-  programs.hyprland = {
-    enable = true;
-    xwayland = {
-      enable = true;
-      hidpi = false;
-    };
-    nvidiaPatches = false;
-  };
+  # programs.hyprland = {
+  #   enable = true;
+  #   xwayland = {
+  #     enable = true;
+  #     hidpi = false;
+  #   };
+  #   nvidiaPatches = false;
+  # };
 
   services.ratbagd.enable = true;
 
@@ -203,6 +200,13 @@
     git
     git-lfs
     docker
+
+    python311Packages.pip
+    python311Packages.cffi
+    python311Packages.cairocffi
+    python311Packages.dbus-next
+    python311Packages.xcffib
+    python311Packages.pylsp-mypy
 
     radeontop
 
@@ -228,10 +232,11 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = false;
+    wlr.enable = true;
     xdgOpenUsePortal = true;
     extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
+      # xdg-desktop-portal-hyprland
+      xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
       xdg-utils
     ];

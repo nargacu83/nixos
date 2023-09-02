@@ -6,10 +6,10 @@ local dpi = xresources.apply_dpi
 
 local taglist = {}
 
-local tag_width = 60
-local tag_height = 10
+local tag_width = 20
+local tag_height = 6
 -- local tag_shape = function (cr, w, h) gears.shape.rounded_rect(cr, w, h, 3) end
-local tag_shape = function (cr, w, h) gears.shape.rounded_bar(cr, w, h) end
+local tag_shape = function (cr, w, h) gears.shape.rounded_bar(cr, w, tag_height) end
 
 local taglist_buttons = gears.table.join(
     awful.button({ }, 1, function(t) t:view_only() end),
@@ -33,14 +33,14 @@ function taglist.get(s)
         screen = s,
         filter = awful.widget.taglist.filter.all,
         layout = {
-            spacing = 10,
+            spacing = 5,
             layout  = wibox.layout.fixed.horizontal
         },
         style = {shape = tag_shape},
         widget_template = {
             {
                 id = 'margin_role',
-                right = 15,
+                right = tag_width,
                 widget = wibox.container.margin
             },
             id = 'background_role',

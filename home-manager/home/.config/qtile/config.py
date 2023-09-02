@@ -26,7 +26,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import bar, layout, widget
+import os
+import subprocess
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -37,22 +39,16 @@ keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
     Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
-    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+    Key([mod, "shift"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key([mod, "shift"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -68,20 +64,14 @@ keys = [
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
-    Key(
-        [mod],
-        "f",
-        lazy.window.toggle_fullscreen(),
-        desc="Toggle fullscreen on the focused window",
-    ),
-    Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
+    Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
 
-group_names = [("1", {'layout': 'monadtall', 'matches': [Match(wm_class=["freetube"])]}),
-               ("2", {'layout': 'monadtall', 'matches': [Match(wm_class=["vscodium", "jetbrains-rider", "unityhub", "Unity"])]}),
+group_names = [("1", {'layout': 'monadtall'}),
+               ("2", {'layout': 'monadtall'}),
                ("3", {'layout': 'monadtall', 'matches': [Match(wm_class=["discord", "element"])]}),
                ("4", {'layout': 'monadtall'})]
 
@@ -98,42 +88,72 @@ for i, (name, kwargs) in enumerate(group_names, 0):
     # Send current window to another group
     keys.append(Key([mod, "shift"], group_keys[i], lazy.window.togroup(name)))
 
+theme_colors = {
+    "fg_normal": "#f8f8f2",
+    "fg_focus": "#ffffff",
+    "bg_normal": "#282a36BF",
+    "bg_focus": "#bd93f9ee",
+    "bg_urgent": "#f8f8f2",
+}
+
 layouts = [
-    layout.MonadTall(),
-    layout.Max(),
+    layout.MonadTall(
+        new_client_position = "top",
+        border_width = 2,
+        margin = 2,
+        border_normal = theme_colors["bg_normal"],
+        border_focus = theme_colors["bg_focus"],
+    ),
+    layout.Max(
+        only_focused = False,
+        border_width = 0,
+        margin = 0,
+        border_normal = theme_colors["bg_normal"],
+        border_focus = theme_colors["bg_focus"],
+    ),
 ]
 
 widget_defaults = dict(
-    font="Cantarell",
-    fontsize=10,
-    padding=3,
+    font = "Cantarell Bold",
+    fontsize = 11,
+    padding = 5,
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                widget.Clock(format="%a %d %b %Y"),
+                widget.Sep(
+                    linewidth = 0,
+                    padding = 4
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.Clock(format="%H:%M"),
+                widget.Spacer(),
+
+                widget.GroupBox(),
+                widget.Spacer(),
+
+                widget.GenPollCommand(
+                    cmd = "cpu-usage",
+                    update_interval = 2
+                ),
+                widget.GenPollCommand(
+                    cmd = "gpu-usage",
+                    update_interval = 2
+                ),
+                widget.GenPollCommand(
+                    cmd = "mem-usage",
+                    update_interval = 2
+                ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                widget.Systray(
+                    padding = 5
+                ),
             ],
-            24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            30,
         ),
         # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
@@ -151,7 +171,7 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
-follow_mouse_focus = True
+follow_mouse_focus = False
 bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
@@ -179,7 +199,23 @@ floating_layout = layout.Floating(
         Match(wm_class='notification'),
         Match(wm_class='splash'),
         Match(wm_class='toolbar'),
-        Match(func=lambda c: c.has_fixed_size())
+        Match(func=lambda c: c.has_fixed_size()),
+
+        Match(wm_class='Arandr'),
+        Match(wm_class='Blueman-manager'),
+        Match(wm_class='Gpick'),
+        Match(wm_class='Kruler'),
+        Match(wm_class='MessageWin'), # kalarm.
+        Match(wm_class='Sxiv'),
+        Match(wm_class='Tor Browser'), # Needs a fixed window size to avoid fingerprinting by screen size.
+        Match(wm_class='Wpa_gui'),
+        Match(wm_class='veromix'),
+        Match(wm_class='xtightvncviewer'),
+        Match(wm_class='pavucontrol'),
+        Match(wm_class='kdenlive'),
+        Match(wm_class='pinentry-gtk-2'), # GPG key password entry
+        Match(wm_class='Tor Browser'),
+        Match(wm_class='origin.exe'),
     ]
 )
 auto_fullscreen = True
@@ -206,4 +242,4 @@ wmname = "LG3D"
 @hook.subscribe.startup_once
 def startup_once():
     home = os.path.expanduser('~')
-    subprocess.call([home + '/.config/qtile/autostart.sh'])
+    subprocess.call([home + '/.config/autostart.sh'])
