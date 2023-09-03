@@ -113,7 +113,6 @@
     nextcloud-client
     syncplay
     neofetch
-    fcitx5
 
     # Media
     imv
@@ -123,9 +122,6 @@
     obs-studio
     obs-studio-plugins.obs-gstreamer
     obs-studio-plugins.obs-vaapi
-
-    lutris
-    mangohud
 
     # Development
     cmake
@@ -160,17 +156,12 @@
     enableBashIntegration = true;
   };
 
-  programs.waybar = {
-    enable = true;
-    # Enable Workspaces on Hyprland
-    package = pkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    });
-  };
-
-  # xsession = {
+  # programs.waybar = {
   #   enable = true;
-  #   windowManager.awesome.enable = true;
+  #   # Enable Workspaces on Hyprland
+  #   package = pkgs.waybar.overrideAttrs (oldAttrs: {
+  #     mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+  #   });
   # };
 
   services.easyeffects = {

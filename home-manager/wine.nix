@@ -1,9 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    lutris
-    mangohud
+  home.packages = with pkgs; [
     wineWowPackages.stagingFull
     winetricks
   ];
