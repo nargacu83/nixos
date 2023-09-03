@@ -192,6 +192,7 @@
     polkit_gnome
     vim
     wget
+    xdg-utils
 
     zsh
     zsh-completions
@@ -229,6 +230,7 @@
   };
 
   programs.java.enable = true;
+  programs.adb.enable = true;
 
   xdg.portal = {
     enable = true;
@@ -236,9 +238,7 @@
     xdgOpenUsePortal = true;
     extraPortals = with pkgs; [
       # xdg-desktop-portal-hyprland
-      xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
-      xdg-utils
     ];
   };
 
@@ -284,7 +284,7 @@
         # Be sure to change it (using passwd) after rebooting!
         initialPassword = "password";
         isNormalUser = true;
-        extraGroups = [ "wheel" "kvm" "input" "disk" "libvirtd" "networkmanager" ];
+        extraGroups = [ "wheel" "kvm" "input" "disk" "libvirtd" "networkmanager" "adbusers" ];
       };
     };
   };

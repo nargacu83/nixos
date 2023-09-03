@@ -59,6 +59,7 @@
     # Devices
     radeontop
     piper
+    scrcpy
 
     # X11
     picom-jonaburg
@@ -111,6 +112,8 @@
     unstable.feishin
     nextcloud-client
     syncplay
+    neofetch
+    fcitx5
 
     # Media
     imv
@@ -188,7 +191,8 @@
 
   home.sessionVariables = {
     # Hint electron apps to use wayland
-    NIXOS_OZONE_WL = 1;
+    # NIXOS_OZONE_WL = "1";
+    GTK_USE_PORTAL = "1";
     # Java applications fix, i don't remember for what
     _JAVA_AWT_WM_NONREPARENTING = "1";
     # Multi languages keyboard
