@@ -48,6 +48,8 @@
     # Diff tool for nix packages
     nvd
     gitui
+    ncdu
+    joshuto
 
     pciutils
     networkmanagerapplet

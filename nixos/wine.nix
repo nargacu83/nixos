@@ -6,5 +6,6 @@
     mangohud
     wineWowPackages.stagingFull
     winetricks
+    protonup-qt
   ];
 }
