@@ -19,6 +19,7 @@
     ./systemd.nix
     ./wine.nix
     ./flatpak.nix
+    ./bindfs.nix
     # ./users.nix
 
     # Import your generated (nixos-generate-config) hardware configuration

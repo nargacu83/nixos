@@ -58,7 +58,7 @@ print_message "Configuring Flatpaks..."
 flatpak --user override --reset
 
 # Fixes for fonts and icons
-ln -s /run/current-system/sw/share/X11/fonts ~/.local/share/fonts
+# ln -s /run/current-system/sw/share/X11/fonts ~/.local/share/fonts
 flatpak --user override --filesystem=$HOME/.local/share/fonts:ro
 flatpak --user override --filesystem=$HOME/.icons/:ro
 flatpak --user override --filesystem=/usr/share/icons/:ro
