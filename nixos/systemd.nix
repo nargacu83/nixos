@@ -8,9 +8,9 @@
     ];
     user = {
       # Make xdg-desktop-portal aware of each portals (should be upstreamed)
-      services.xdg-desktop-portal.environment = {
-        XDG_DESKTOP_PORTAL_DIR = config.environment.variables.XDG_DESKTOP_PORTAL_DIR;
-      };
+      # services.xdg-desktop-portal.environment = {
+      #   XDG_DESKTOP_PORTAL_DIR = config.environment.variables.XDG_DESKTOP_PORTAL_DIR;
+      # };
       extraConfig = ''
         DefaultEnvironment="PATH=/run/current-system/sw/bin"
         DefaultLimitNOFILE=1048576
